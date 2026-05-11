@@ -29,7 +29,7 @@ export default function ThankYouPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a
-              href="https://wa.me/971500000000?text=Hi%20PixelPulse%2C%20I%20just%20submitted%20the%20form%20and%20would%20like%20to%20talk."
+              href="https://wa.me/971545535031?text=Hi%20PixelPulse%2C%20I%20just%20submitted%20the%20form%20and%20would%20like%20to%20talk."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
