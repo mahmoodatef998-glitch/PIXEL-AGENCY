@@ -52,7 +52,8 @@ export async function POST(req: NextRequest) {
       ip
     };
 
-    console.log("New lead captured:", lead);
+    // Avoid logging PII in production logs. Integrate with your CRM/email provider here instead.
+    console.log("New lead captured:", { source: lead.source, createdAt: lead.createdAt, hasEmail: Boolean(lead.email) });
 
     return NextResponse.json({
       ok: true,

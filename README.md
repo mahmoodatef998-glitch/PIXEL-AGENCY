@@ -20,6 +20,13 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Environment variables
+
+This project runs with local fallback content by default. Sanity is optional.
+
+- Copy `.env.example` to `.env.local`
+- Add the variables in your hosting provider (Vercel recommended)
+
 ## Project structure
 
 - `app/` routes, API handlers, metadata, sitemap/robots

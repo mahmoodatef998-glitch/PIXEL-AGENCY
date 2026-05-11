@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface py-12">
@@ -15,9 +17,9 @@ export function Footer() {
             <a href="#packages" className="hover:text-accent">
               Pricing
             </a>
-            <a href="/blog" className="hover:text-accent">
+            <Link href="/blog" className="hover:text-accent">
               Blog
-            </a>
+            </Link>
             <a href="#contact" className="hover:text-accent">
               Contact
             </a>

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import Link from "next/link";
 import { getServiceBySlug, getServices } from "@/lib/content";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -74,9 +75,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="mt-8 rounded-2xl border border-accent/50 bg-[color-mix(in_oklab,var(--accent)_8%,var(--surface))] p-6">
         <h2 className="font-display text-2xl font-bold">Ready to execute?</h2>
         <p className="mt-2 text-sm text-muted">{service.cta}</p>
-        <a href="/#contact" className="mt-4 inline-block text-sm font-semibold text-accent hover:underline">
+        <Link href="/#contact" className="mt-4 inline-block text-sm font-semibold text-accent hover:underline">
           Book strategy call →
-        </a>
+        </Link>
       </section>
     </main>
   );
