@@ -43,8 +43,8 @@ This project runs with local fallback content by default. Sanity is optional.
 
 Contact form submits to `POST /api/contact` with:
 - schema validation via Zod
-- basic in-memory rate limiting
-- CRM integration placeholders for production
+- rate limiting via Vercel KV (Redis-backed)
+- lead storage in KV + email notification via Resend (set env vars)
 
 ## Next production tasks
 
