@@ -1,0 +1,49 @@
+# PixelPulse Agency — Next.js Production Rebuild
+
+Premium marketing + technology agency platform built with:
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- GSAP
+- Lenis smooth scrolling
+- Lucide icons
+- CMS-ready architecture (Sanity-ready fallback layer)
+
+## Quick start
+
+```powershell
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Project structure
+
+- `app/` routes, API handlers, metadata, sitemap/robots
+- `components/` shared UI + nav/footer + motion providers
+- `sections/` homepage modules
+- `lib/` utility + content access layer
+- `hooks/` custom hooks (Lenis)
+- `animations/` reusable motion wrappers
+- `cms/` CMS bridge config (Sanity-ready)
+- `content/` local fallback content
+- `types/` shared TS types
+
+## Leads
+
+Contact form submits to `POST /api/contact` with:
+- schema validation via Zod
+- basic in-memory rate limiting
+- CRM integration placeholders for production
+
+## Next production tasks
+
+- Connect CRM (HubSpot/Zoho/Sheets)
+- Configure Sanity content studio + queries
+- Add analytics (GA4 + Meta + TikTok events)
+- Add real assets (logos, dashboard screenshots, testimonials)
+- Deploy to Vercel with environment variables
+
