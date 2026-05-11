@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 type Status = { type: "idle" | "success" | "error"; message?: string };
 
 export function ContactForm() {
+  const router = useRouter();
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [loading, setLoading] = useState(false);
 
@@ -22,6 +25,8 @@ export function ContactForm() {
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.message || "Could not submit form.");
       setStatus({ type: "success", message: data.message });
+      formRef.current?.reset();
+      router.push("/thank-you");
     } catch (error) {
       const message = error instanceof Error ? error.message : "Could not send form.";
       setStatus({ type: "error", message });
@@ -32,6 +37,7 @@ export function ContactForm() {
 
   return (
     <form
+      ref={formRef}
       action={onSubmit}
       className="glass rounded-2xl border border-border p-6 md:p-8"
       aria-label="Lead contact form"
@@ -71,7 +77,13 @@ export function ContactForm() {
         {loading ? "Sending..." : "Request strategy call"}
       </Button>
       {status.type !== "idle" && (
-        <p className={`mt-3 text-sm ${status.type === "success" ? "text-success" : "text-red-400"}`}>{status.message}</p>
+        <p
+          className={`mt-3 text-sm ${status.type === "success" ? "text-success" : "text-red-400"}`}
+          role="status"
+          aria-live="polite"
+        >
+          {status.message}
+        </p>
       )}
     </form>
   );

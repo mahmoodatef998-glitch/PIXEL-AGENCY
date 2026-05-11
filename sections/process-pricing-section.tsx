@@ -1,5 +1,7 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "@/animations/reveal";
+import { Button } from "@/components/ui/button";
 
 export function ProcessAndPricing({
   pricingPlans
@@ -41,26 +43,42 @@ export function ProcessAndPricing({
           <h2 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight">
             Transparent pricing. No hidden fees.
           </h2>
+          <p className="mt-4 max-w-2xl text-sm text-muted">
+            Pick a package to get started. Every plan includes strategy, reporting, and a clear next-step roadmap.
+          </p>
         </Reveal>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-3 items-stretch">
           {pricingPlans.map((plan, i) => (
             <Reveal key={plan.name} delay={i * 0.05}>
               <article
-                className={`h-full rounded-2xl border p-6 ${
+                className={`relative h-full rounded-2xl border p-6 overflow-hidden ${
                   plan.featured
-                    ? "border-accent bg-[color-mix(in_oklab,var(--accent)_8%,var(--surface))]"
-                    : "glass border-border"
+                    ? "border-accent bg-[color-mix(in_oklab,var(--accent)_10%,var(--surface))] shadow-glow"
+                    : "glass border-border hover:border-[color-mix(in_oklab,var(--accent)_40%,var(--border))]"
                 }`}
               >
+                <div
+                  className={`pointer-events-none absolute inset-x-0 top-0 h-24 ${
+                    plan.featured
+                      ? "bg-[radial-gradient(60%_100%_at_50%_0%,rgba(0,229,255,0.35)_0%,rgba(0,229,255,0)_70%)]"
+                      : "bg-[radial-gradient(60%_100%_at_50%_0%,rgba(123,97,255,0.25)_0%,rgba(123,97,255,0)_70%)]"
+                  }`}
+                />
                 {plan.featured && (
-                  <span className="mb-3 inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-black">
+                  <span className="relative mb-3 inline-block rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-[0.08em] text-black">
                     Most popular
                   </span>
                 )}
-                <h3 className="font-display text-2xl font-bold">{plan.name}</h3>
-                <p className="mt-1 text-xl font-bold text-accent">{plan.price}</p>
-                <p className="mt-2 text-sm text-muted">{plan.subtitle}</p>
-                <ul className="mt-5 space-y-2 text-sm text-muted">
+                <h3 className="relative font-display text-2xl font-bold">{plan.name}</h3>
+                <p className="relative mt-2 text-3xl font-extrabold tracking-tight">
+                  <span className="text-text">{plan.price}</span>
+                </p>
+                <p className="relative mt-2 text-sm text-muted">{plan.subtitle}</p>
+
+                <div className="relative mt-6">
+                  <p className="text-xs uppercase tracking-[0.14em] text-muted">Includes</p>
+                </div>
+                <ul className="relative mt-4 space-y-2 text-sm text-muted">
                   {plan.features.map((f) => (
                     <li key={f} className="flex gap-2">
                       <Check className="mt-0.5 size-4 text-success" />
@@ -68,6 +86,20 @@ export function ProcessAndPricing({
                     </li>
                   ))}
                 </ul>
+
+                <div className="relative mt-7 grid gap-3">
+                  <Link href={`/#contact`} className="block">
+                    <Button className="w-full" variant={plan.featured ? "primary" : "secondary"}>
+                      {plan.featured ? "Choose Professional" : `Choose ${plan.name}`}
+                    </Button>
+                  </Link>
+                  <p className="text-center text-xs text-muted">
+                    Not sure?{" "}
+                    <Link className="text-accent hover:underline" href="/#contact">
+                      Ask for a recommendation
+                    </Link>
+                  </p>
+                </div>
               </article>
             </Reveal>
           ))}
