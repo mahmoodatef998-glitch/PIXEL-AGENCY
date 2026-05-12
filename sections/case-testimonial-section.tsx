@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 const showcaseCards = [
   {
     key: "luxury-cars",
-    category: "Luxury Cars",
+    category: "Automotive Marketing",
     title: "Midnight Velocity Launch",
     description:
       "Cinematic social + paid campaign engineered around premium visuals, night-city reflections, and high-intent test-drive funnels.",
@@ -19,7 +19,7 @@ const showcaseCards = [
   },
   {
     key: "real-estate",
-    category: "Real Estate",
+    category: "Luxury Real Estate",
     title: "Skyline Prestige Campaign",
     description:
       "High-end property storytelling with sunset architecture shots, funnel-specific ad sets, and conversion-optimized landing experiences.",
@@ -112,36 +112,37 @@ export function CaseAndTestimonials({
                   <div className="absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(122deg,rgba(255,214,120,0.5),rgba(176,140,255,0.35),rgba(92,176,255,0.42))]" />
 
                   <div className="relative rounded-[27px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_84%,transparent)] p-6 md:p-7">
-                    <div className={`relative overflow-hidden rounded-2xl border border-white/10 p-6 md:p-7 min-h-56 ${card.glow}`}>
+                    <div className="mb-4">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[color-mix(in_oklab,var(--surface)_52%,transparent)] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-[#F2DBAF] backdrop-blur-md">
+                        <Sparkles className="size-3.5" />
+                        {card.category}
+                      </div>
+                    </div>
+
+                    <div className={`relative overflow-hidden rounded-2xl border border-white/10 min-h-64 ${card.glow}`}>
                       <div
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url('${card.image}')` }}
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,18,0.2)_0%,rgba(10,12,18,0.55)_55%,rgba(10,12,18,0.88)_100%)]" />
-                      <div className="absolute inset-0 bg-[radial-gradient(55%_80%_at_18%_15%,rgba(255,214,120,0.18)_0%,rgba(255,214,120,0)_65%),radial-gradient(45%_70%_at_82%_20%,rgba(123,97,255,0.2)_0%,rgba(123,97,255,0)_70%)]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,18,0.12)_0%,rgba(10,12,18,0.24)_55%,rgba(10,12,18,0.42)_100%)]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(55%_80%_at_18%_15%,rgba(255,214,120,0.12)_0%,rgba(255,214,120,0)_65%),radial-gradient(45%_70%_at_82%_20%,rgba(123,97,255,0.14)_0%,rgba(123,97,255,0)_70%)]" />
                       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(255,255,255,0.14),rgba(255,255,255,0)_70%)]" />
                       <div className="pointer-events-none absolute -right-8 top-6 size-24 rounded-full bg-white/10 blur-2xl transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
                       <div className="pointer-events-none absolute -left-8 bottom-4 size-20 rounded-full bg-white/8 blur-2xl transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
-
-                      <div className="relative z-10 rounded-xl border border-white/12 bg-black/20 p-4 backdrop-blur-md">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-[#F2DBAF]">
-                          <Sparkles className="size-3.5" />
-                          {card.category}
-                        </div>
-                        <h3 className="mt-4 max-w-[16ch] font-display text-2xl md:text-3xl font-bold leading-tight text-white">
-                          {card.title}
-                        </h3>
-                        <p className="mt-3 max-w-xl text-sm text-white/80 leading-relaxed">{card.description}</p>
-                      </div>
                     </div>
 
-                    <div className="mt-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                      <span className="inline-flex w-fit rounded-full border border-white/16 bg-[color-mix(in_oklab,var(--surface)_60%,transparent)] px-3 py-1 text-xs font-semibold text-accent">
+                    <div className="mt-5">
+                      <h3 className="font-display text-xl md:text-2xl font-bold leading-tight text-white">{card.title}</h3>
+                      <p className="mt-2 text-sm text-white/75 line-clamp-1">{card.description}</p>
+                    </div>
+
+                    <div className="mt-5 flex items-center justify-between gap-3">
+                      <span className="inline-flex w-fit rounded-full border border-white/16 bg-[color-mix(in_oklab,var(--surface)_60%,transparent)] px-3 py-1 text-xs font-semibold text-accent backdrop-blur-sm">
                         {card.result}
                       </span>
 
                       <Link href="/#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[#F2DEB6] transition-colors hover:text-accent">
-                        View project story
+                        View Case Study
                         <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Link>
                     </div>
