@@ -12,6 +12,8 @@ const showcaseCards = [
     description:
       "Cinematic social + paid campaign engineered around premium visuals, night-city reflections, and high-intent test-drive funnels.",
     result: "+312 qualified test-drive leads",
+    image:
+      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=80",
     glow:
       "bg-[radial-gradient(80%_120%_at_80%_15%,rgba(86,147,255,0.35)_0%,rgba(86,147,255,0)_55%),radial-gradient(60%_80%_at_20%_100%,rgba(142,64,255,0.3)_0%,rgba(142,64,255,0)_55%),linear-gradient(155deg,#0a1019_0%,#111b2b_52%,#0a0f17_100%)]"
   },
@@ -22,6 +24,8 @@ const showcaseCards = [
     description:
       "High-end property storytelling with sunset architecture shots, funnel-specific ad sets, and conversion-optimized landing experiences.",
     result: "4.1x inquiry growth in 8 weeks",
+    image:
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80",
     glow:
       "bg-[radial-gradient(80%_120%_at_82%_18%,rgba(255,194,96,0.34)_0%,rgba(255,194,96,0)_58%),radial-gradient(65%_80%_at_10%_95%,rgba(123,97,255,0.28)_0%,rgba(123,97,255,0)_56%),linear-gradient(160deg,#111216_0%,#1e1b18_55%,#0d1018_100%)]"
   },
@@ -32,6 +36,8 @@ const showcaseCards = [
     description:
       "Warm cinematic creatives, offer-based retargeting, and reservation-first customer journeys for hospitality brands.",
     result: "3x reservation volume uplift",
+    image:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1800&q=80",
     glow:
       "bg-[radial-gradient(70%_100%_at_76%_18%,rgba(255,153,90,0.35)_0%,rgba(255,153,90,0)_60%),radial-gradient(70%_85%_at_12%_100%,rgba(255,214,120,0.26)_0%,rgba(255,214,120,0)_56%),linear-gradient(160deg,#1a1210_0%,#241917_52%,#0f1118_100%)]"
   },
@@ -42,6 +48,8 @@ const showcaseCards = [
     description:
       "Premium clinic positioning, educational content strategy, and appointment automation tailored for modern healthcare brands.",
     result: "+68% appointment conversion rate",
+    image:
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=80",
     glow:
       "bg-[radial-gradient(75%_110%_at_78%_14%,rgba(214,179,108,0.32)_0%,rgba(214,179,108,0)_58%),radial-gradient(70%_85%_at_15%_98%,rgba(132,176,255,0.25)_0%,rgba(132,176,255,0)_56%),linear-gradient(158deg,#0f1318_0%,#181f29_50%,#0b0f14_100%)]"
   },
@@ -52,6 +60,8 @@ const showcaseCards = [
     description:
       "Elegant creative direction with premium product storytelling, campaign sequencing, and high-aesthetic performance media.",
     result: "5.2x blended ROAS peak month",
+    image:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=80",
     glow:
       "bg-[radial-gradient(80%_115%_at_80%_16%,rgba(247,182,213,0.32)_0%,rgba(247,182,213,0)_58%),radial-gradient(65%_85%_at_10%_96%,rgba(163,122,255,0.27)_0%,rgba(163,122,255,0)_56%),linear-gradient(160deg,#17101a_0%,#201626_48%,#0d1018_100%)]"
   }
@@ -103,11 +113,17 @@ export function CaseAndTestimonials({
 
                   <div className="relative rounded-[27px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_84%,transparent)] p-6 md:p-7">
                     <div className={`relative overflow-hidden rounded-2xl border border-white/10 p-6 md:p-7 min-h-56 ${card.glow}`}>
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
+                        style={{ backgroundImage: `url('${card.image}')` }}
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,18,0.2)_0%,rgba(10,12,18,0.55)_55%,rgba(10,12,18,0.88)_100%)]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(55%_80%_at_18%_15%,rgba(255,214,120,0.18)_0%,rgba(255,214,120,0)_65%),radial-gradient(45%_70%_at_82%_20%,rgba(123,97,255,0.2)_0%,rgba(123,97,255,0)_70%)]" />
                       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(255,255,255,0.14),rgba(255,255,255,0)_70%)]" />
                       <div className="pointer-events-none absolute -right-8 top-6 size-24 rounded-full bg-white/10 blur-2xl transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
                       <div className="pointer-events-none absolute -left-8 bottom-4 size-20 rounded-full bg-white/8 blur-2xl transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
 
-                      <div className="relative">
+                      <div className="relative z-10 rounded-xl border border-white/12 bg-black/20 p-4 backdrop-blur-md">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-[#F2DBAF]">
                           <Sparkles className="size-3.5" />
                           {card.category}
