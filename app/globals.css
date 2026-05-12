@@ -36,8 +36,8 @@ body {
 .glass {
   background: color-mix(in oklab, var(--surface) 72%, transparent);
   border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .gradient-text {
@@ -58,11 +58,32 @@ body {
 
 .hero-ken {
   animation: heroKen 28s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
   .hero-ken {
     animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 1.25rem, 1200px);
+  }
+
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 }
 

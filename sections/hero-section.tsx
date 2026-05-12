@@ -20,7 +20,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           onCanPlay={() => setVideoReady(true)}
           onLoadedData={() => setVideoReady(true)}
         >
@@ -58,24 +58,24 @@ export function HeroSection({ tools }: { tools: string[] }) {
       {/* Floating particles / ambient orbs */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-[7%] top-[22%] z-[2] size-32 rounded-full bg-[color-mix(in_oklab,var(--purple)_30%,transparent)] blur-3xl"
+        className="pointer-events-none absolute left-[7%] top-[22%] z-[2] hidden md:block size-28 rounded-full bg-[color-mix(in_oklab,var(--purple)_26%,transparent)] blur-3xl"
         animate={{ y: [0, -18, 0], x: [0, 8, 0] }}
         transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-[12%] top-[18%] z-[2] size-28 rounded-full bg-[color-mix(in_oklab,var(--accent)_24%,transparent)] blur-3xl"
+        className="pointer-events-none absolute right-[12%] top-[18%] z-[2] hidden md:block size-24 rounded-full bg-[color-mix(in_oklab,var(--accent)_22%,transparent)] blur-3xl"
         animate={{ y: [0, 16, 0], x: [0, -12, 0] }}
         transition={{ duration: 8.2, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute right-[28%] bottom-[16%] z-[2] size-24 rounded-full bg-[rgba(255,214,120,0.22)] blur-3xl"
+        className="pointer-events-none absolute right-[28%] bottom-[16%] z-[2] hidden lg:block size-20 rounded-full bg-[rgba(255,214,120,0.2)] blur-3xl"
         animate={{ y: [0, -14, 0] }}
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative z-10 min-h-screen py-16 md:py-20 flex flex-col justify-between">
+      <div className="container relative z-10 min-h-[92svh] md:min-h-screen py-14 md:py-20 flex flex-col justify-between">
         <div className="max-w-3xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -109,17 +109,17 @@ export function HeroSection({ tools }: { tools: string[] }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.62, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3"
           >
-            <a href="#contact">
-              <Button className="shadow-[0_0_32px_rgba(0,229,255,0.24)]">
+            <a href="#contact" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto shadow-[0_0_24px_rgba(0,229,255,0.2)]">
                 Start Your Project <ArrowRight className="size-4" />
               </Button>
             </a>
-            <a href="#case-studies">
+            <a href="#case-studies" className="w-full sm:w-auto">
               <Button
                 variant="secondary"
-                className="border-white/25 bg-[color-mix(in_oklab,var(--surface)_40%,transparent)] hover:border-[#F2D9A6]/60 hover:text-[#F2D9A6]"
+                className="w-full sm:w-auto border-white/25 bg-[color-mix(in_oklab,var(--surface)_40%,transparent)] hover:border-[#F2D9A6]/60 hover:text-[#F2D9A6]"
               >
                 View Our Work
               </Button>
@@ -127,7 +127,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
           </motion.div>
         </div>
 
-        <div className="pt-20 md:pt-24">
+        <div className="pt-14 md:pt-20">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}

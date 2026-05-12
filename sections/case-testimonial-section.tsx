@@ -13,7 +13,7 @@ const showcaseCards = [
       "Cinematic social + paid campaign engineered around premium visuals, night-city reflections, and high-intent test-drive funnels.",
     result: "+312 qualified test-drive leads",
     image:
-      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1280&q=72",
     glow:
       "bg-[radial-gradient(80%_120%_at_80%_15%,rgba(86,147,255,0.35)_0%,rgba(86,147,255,0)_55%),radial-gradient(60%_80%_at_20%_100%,rgba(142,64,255,0.3)_0%,rgba(142,64,255,0)_55%),linear-gradient(155deg,#0a1019_0%,#111b2b_52%,#0a0f17_100%)]"
   },
@@ -25,7 +25,7 @@ const showcaseCards = [
       "High-end property storytelling with sunset architecture shots, funnel-specific ad sets, and conversion-optimized landing experiences.",
     result: "4.1x inquiry growth in 8 weeks",
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1280&q=72",
     glow:
       "bg-[radial-gradient(80%_120%_at_82%_18%,rgba(255,194,96,0.34)_0%,rgba(255,194,96,0)_58%),radial-gradient(65%_80%_at_10%_95%,rgba(123,97,255,0.28)_0%,rgba(123,97,255,0)_56%),linear-gradient(160deg,#111216_0%,#1e1b18_55%,#0d1018_100%)]"
   },
@@ -37,7 +37,7 @@ const showcaseCards = [
       "Warm cinematic creatives, offer-based retargeting, and reservation-first customer journeys for hospitality brands.",
     result: "3x reservation volume uplift",
     image:
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1280&q=72",
     glow:
       "bg-[radial-gradient(70%_100%_at_76%_18%,rgba(255,153,90,0.35)_0%,rgba(255,153,90,0)_60%),radial-gradient(70%_85%_at_12%_100%,rgba(255,214,120,0.26)_0%,rgba(255,214,120,0)_56%),linear-gradient(160deg,#1a1210_0%,#241917_52%,#0f1118_100%)]"
   },
@@ -49,7 +49,7 @@ const showcaseCards = [
       "Premium clinic positioning, educational content strategy, and appointment automation tailored for modern healthcare brands.",
     result: "+68% appointment conversion rate",
     image:
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1280&q=72",
     glow:
       "bg-[radial-gradient(75%_110%_at_78%_14%,rgba(214,179,108,0.32)_0%,rgba(214,179,108,0)_58%),radial-gradient(70%_85%_at_15%_98%,rgba(132,176,255,0.25)_0%,rgba(132,176,255,0)_56%),linear-gradient(158deg,#0f1318_0%,#181f29_50%,#0b0f14_100%)]"
   },
@@ -61,7 +61,7 @@ const showcaseCards = [
       "Elegant creative direction with premium product storytelling, campaign sequencing, and high-aesthetic performance media.",
     result: "5.2x blended ROAS peak month",
     image:
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1280&q=72",
     glow:
       "bg-[radial-gradient(80%_115%_at_80%_16%,rgba(247,182,213,0.32)_0%,rgba(247,182,213,0)_58%),radial-gradient(65%_85%_at_10%_96%,rgba(163,122,255,0.27)_0%,rgba(163,122,255,0)_56%),linear-gradient(160deg,#17101a_0%,#201626_48%,#0d1018_100%)]"
   }
@@ -78,7 +78,7 @@ export function CaseAndTestimonials({
 
   return (
     <>
-      <section id="case-studies" className="relative overflow-hidden bg-surface py-24 md:py-28">
+      <section id="case-studies" className="relative overflow-hidden bg-surface py-20 md:py-24">
         <div
           aria-hidden
           className="pointer-events-none absolute -left-28 top-8 size-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,214,120,0.18)_0%,rgba(255,214,120,0)_72%)] blur-2xl"
@@ -99,16 +99,16 @@ export function CaseAndTestimonials({
         <div className="container relative z-10">
           <Reveal className="text-center">
             <p className="text-xs uppercase tracking-[0.18em] text-accent">Case Studies</p>
-            <h2 className="mt-3 font-display text-4xl md:text-6xl font-extrabold tracking-tight text-text">Our Previous Work</h2>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-extrabold tracking-tight text-text">Our Previous Work</h2>
             <p className="mx-auto mt-4 max-w-2xl bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#9B8CFF,#89DAFF)] bg-clip-text text-sm md:text-base font-medium text-transparent">
               Creative campaigns crafted for ambitious brands.
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-7 lg:grid-cols-2">
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {showcaseCards.map((card, i) => (
               <Reveal key={card.key} delay={i * 0.06}>
-                <article className="group relative overflow-hidden rounded-[28px] border border-white/12 bg-[linear-gradient(150deg,rgba(18,26,40,0.72),rgba(12,16,24,0.6))] p-[1px] shadow-[0_22px_58px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_80px_rgba(0,0,0,0.42)]">
+                <article className="group relative overflow-hidden rounded-[28px] border border-white/12 bg-[linear-gradient(150deg,rgba(18,26,40,0.72),rgba(12,16,24,0.6))] p-[1px] shadow-[0_16px_40px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_22px_56px_rgba(0,0,0,0.34)]">
                   <div className="absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(122deg,rgba(255,214,120,0.5),rgba(176,140,255,0.35),rgba(92,176,255,0.42))]" />
 
                   <div className="relative rounded-[27px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_84%,transparent)] p-6 md:p-7">
@@ -119,7 +119,7 @@ export function CaseAndTestimonials({
                       </div>
                     </div>
 
-                    <div className={`relative overflow-hidden rounded-2xl border border-white/10 min-h-64 ${card.glow}`}>
+                    <div className={`relative overflow-hidden rounded-2xl border border-white/10 min-h-56 md:min-h-64 ${card.glow}`}>
                       <div
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
                         style={{ backgroundImage: `url('${card.image}')` }}

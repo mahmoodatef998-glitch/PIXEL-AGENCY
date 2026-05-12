@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface py-12">
-      <div className="container grid gap-8 md:grid-cols-3">
+    <footer className="border-t border-border bg-surface py-10 md:py-12">
+      <div className="container grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <div>
           <p className="font-display font-extrabold text-lg">PixelPulse Agency</p>
           <p className="mt-2 text-sm text-muted">Marketing + Technology. One Roof. Zero Excuses.</p>
@@ -34,7 +34,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="container mt-10 border-t border-border pt-5 text-xs text-muted">
+      <div className="container mt-8 md:mt-10 border-t border-border pt-5 text-xs text-muted">
         &copy; {new Date().getFullYear()} PixelPulse Agency. All rights reserved.
       </div>
     </footer>

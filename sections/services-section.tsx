@@ -59,14 +59,14 @@ export function ServicesSection({ services }: { services: Service[] }) {
   const serviceSlugs = new Set(services.map((service) => service.slug));
 
   return (
-    <section id="services" className="relative overflow-hidden py-24 md:py-28">
+    <section id="services" className="relative overflow-hidden py-20 md:py-24">
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-36 top-16 size-[28rem] rounded-full bg-[radial-gradient(circle,rgba(255,214,120,0.16)_0%,rgba(255,214,120,0)_70%)] blur-2xl opacity-80"
+        className="pointer-events-none absolute -left-36 top-16 size-[22rem] rounded-full bg-[radial-gradient(circle,rgba(255,214,120,0.14)_0%,rgba(255,214,120,0)_70%)] blur-2xl opacity-70"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-28 bottom-4 size-[24rem] rounded-full bg-[radial-gradient(circle,rgba(123,97,255,0.2)_0%,rgba(123,97,255,0)_72%)] blur-2xl opacity-80"
+        className="pointer-events-none absolute -right-28 bottom-4 size-[20rem] rounded-full bg-[radial-gradient(circle,rgba(123,97,255,0.16)_0%,rgba(123,97,255,0)_72%)] blur-2xl opacity-70"
       />
       <div
         aria-hidden
@@ -80,7 +80,7 @@ export function ServicesSection({ services }: { services: Service[] }) {
       <div className="container relative z-10">
         <Reveal className="text-center">
           <p className="text-xs uppercase tracking-[0.18em] text-accent">Capabilities</p>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-extrabold tracking-tight text-text">Our Services</h2>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-extrabold tracking-tight text-text">Our Services</h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm md:text-base text-muted">
             Creative direction, performance marketing, and technology systems in one premium execution layer.
           </p>
@@ -91,7 +91,7 @@ export function ServicesSection({ services }: { services: Service[] }) {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {premiumServices.map((service, i) => {
             const hasDetailsPage = Boolean(service.slug && serviceSlugs.has(service.slug));
             const href = hasDetailsPage ? `/services/${service.slug}` : "/#contact";
@@ -99,7 +99,7 @@ export function ServicesSection({ services }: { services: Service[] }) {
 
             return (
               <Reveal key={service.title} delay={i * 0.05}>
-                <article className="group relative h-full overflow-hidden rounded-[24px] border border-white/12 bg-[linear-gradient(145deg,rgba(18,26,40,0.7),rgba(12,17,27,0.55))] p-[1px] shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_26px_70px_rgba(0,0,0,0.36)]">
+                <article className="group relative h-full overflow-hidden rounded-[24px] border border-white/12 bg-[linear-gradient(145deg,rgba(18,26,40,0.7),rgba(12,17,27,0.55))] p-[1px] shadow-[0_14px_34px_rgba(0,0,0,0.24)] backdrop-blur-md transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                   <div className="absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(120deg,rgba(255,214,120,0.55),rgba(180,140,255,0.35),rgba(90,174,255,0.45))]" />
                   <div className="relative h-full rounded-[23px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_82%,transparent)] p-7">
                     <span className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
