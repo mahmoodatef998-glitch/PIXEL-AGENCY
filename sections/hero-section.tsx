@@ -2,54 +2,61 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-const HERO_POSTER = "/hero-reel-poster.jpg";
+/** Served from /public — plain <img> avoids Sharp failing on some JPG/JFIF renames */
+const HERO_BG_PRIMARY = "/hero-reel-poster.jpg";
+const HERO_BG_FALLBACK = "/hero-reel-poster.jpg.jfif";
 
 export function HeroSection({ stats, tools }: { stats: { label: string; value: string }[]; tools: string[] }) {
+  const [bgSrc, setBgSrc] = useState(HERO_BG_PRIMARY);
+
   return (
     <section
       id="top"
       className="relative isolate min-h-[min(92vh,920px)] overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24"
     >
-      {/* Full-bleed background image */}
-      <div className="pointer-events-none absolute inset-0 -z-20">
-        <div className="relative h-full min-h-[min(92vh,920px)] w-full">
-          <Image
-            src={HERO_POSTER}
-            alt="PixelPulse — growth marketing, web, and systems"
-            fill
-            priority
-            sizes="100vw"
-            className="hero-ken object-cover object-[center_22%]"
-          />
-        </div>
+      {/* Full-bleed background — positive z-index avoids “disappearing” behind stacking contexts */}
+      <div className="pointer-events-none absolute inset-0 z-0 min-h-[min(92vh,920px)]">
+        {/* eslint-disable-next-line @next/next/no-img-element -- hero bg must bypass optimizer for tricky encodings */}
+        <img
+          src={bgSrc}
+          alt=""
+          aria-hidden
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          className="hero-ken absolute inset-0 block h-full min-h-[min(92vh,920px)] w-full object-cover object-[center_22%]"
+          onError={() => {
+            if (bgSrc !== HERO_BG_FALLBACK) setBgSrc(HERO_BG_FALLBACK);
+          }}
+        />
       </div>
 
       {/* Readability & brand overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(8,12,20,0.55)_0%,rgba(8,12,20,0.35)_28%,rgba(8,12,20,0.82)_72%,#080C14_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(8,12,20,0.5)_0%,rgba(8,12,20,0.28)_32%,rgba(8,12,20,0.78)_78%,#080C14_100%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(115deg,rgba(8,12,20,0.92)_0%,rgba(8,12,20,0.45)_42%,rgba(8,12,20,0.12)_68%,rgba(8,12,20,0.35)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(115deg,rgba(8,12,20,0.88)_0%,rgba(8,12,20,0.38)_45%,rgba(8,12,20,0.1)_72%,rgba(8,12,20,0.32)_100%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 shadow-[inset_0_0_160px_rgba(0,0,0,0.55)]"
+        className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_140px_rgba(0,0,0,0.5)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(rgba(240,244,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(240,244,255,0.08)_1px,transparent_1px)] bg-[length:56px_56px]"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.05] bg-[linear-gradient(rgba(240,244,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(240,244,255,0.1)_1px,transparent_1px)] bg-[length:56px_56px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 mix-blend-overlay opacity-40"
+        className="pointer-events-none absolute inset-0 z-[1] mix-blend-overlay opacity-35"
         style={{
           background:
-            "radial-gradient(ellipse 55% 45% at 18% 18%, rgba(123, 97, 255, 0.35), transparent 60%), radial-gradient(ellipse 50% 40% at 82% 30%, rgba(0, 229, 255, 0.22), transparent 55%)"
+            "radial-gradient(ellipse 55% 45% at 18% 18%, rgba(123, 97, 255, 0.32), transparent 60%), radial-gradient(ellipse 50% 40% at 82% 30%, rgba(0, 229, 255, 0.2), transparent 55%)"
         }}
       />
 
@@ -131,7 +138,6 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
           ))}
         </motion.div>
       </div>
-
     </section>
   );
 }
