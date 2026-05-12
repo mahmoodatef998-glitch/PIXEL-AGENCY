@@ -36,11 +36,11 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
       {/* Cinematic overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,9,14,0.7)_0%,rgba(7,9,14,0.35)_38%,rgba(7,9,14,0.82)_80%,#080C14_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,9,14,0.54)_0%,rgba(7,9,14,0.24)_38%,rgba(7,9,14,0.68)_82%,#080C14_100%)]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(112deg,rgba(10,12,18,0.9)_0%,rgba(10,12,18,0.48)_42%,rgba(10,12,18,0.14)_70%,rgba(10,12,18,0.32)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(112deg,rgba(10,12,18,0.78)_0%,rgba(10,12,18,0.32)_42%,rgba(10,12,18,0.08)_70%,rgba(10,12,18,0.24)_100%)]"
       />
       <div
         aria-hidden
@@ -75,7 +75,7 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative z-10 min-h-screen py-20 md:py-28 flex flex-col justify-center">
+      <div className="container relative z-10 min-h-screen py-16 md:py-20 flex flex-col justify-between">
         <div className="max-w-3xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -90,26 +90,26 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 max-w-[15ch] font-display text-[clamp(2.25rem,6.2vw,5rem)] font-extrabold tracking-tight leading-[0.98] text-text drop-shadow-[0_8px_44px_rgba(0,0,0,0.55)]"
+            className="mt-6 max-w-[13ch] font-display text-[clamp(2rem,5.6vw,4.25rem)] font-extrabold tracking-tight leading-[0.99] text-text drop-shadow-[0_8px_44px_rgba(0,0,0,0.5)]"
           >
-            Building brands that <span className="bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#A58CFF)] bg-clip-text text-transparent">dominate attention</span>
+            Brands built to{" "}
+            <span className="bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#A58CFF)] bg-clip-text text-transparent">be seen</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 max-w-2xl text-[clamp(1rem,2vw,1.18rem)] text-muted/95 drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+            className="mt-4 max-w-xl text-[clamp(0.96rem,1.75vw,1.08rem)] text-muted/92 drop-shadow-[0_4px_18px_rgba(0,0,0,0.38)]"
           >
-            PIXELPULSE is a premium creative marketing studio blending brand storytelling, performance media, and growth systems
-            into one cinematic execution engine.
+            Where strategy meets cinematic storytelling.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.62, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3"
           >
             <a href="#contact">
               <Button className="shadow-[0_0_32px_rgba(0,229,255,0.24)]">
@@ -127,36 +127,38 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.62, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-14 grid gap-3 sm:grid-cols-3 rounded-2xl border border-white/20 bg-[color-mix(in_oklab,var(--surface)_14%,transparent)] p-5 shadow-[0_14px_40px_rgba(0,0,0,0.2)] backdrop-blur-sm"
-        >
-          {stats.map((item) => (
-            <div key={item.label}>
-              <div className="font-display text-2xl font-extrabold text-accent drop-shadow-sm">{item.value}</div>
-              <div className="text-sm text-muted">{item.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        <div className="pt-20 md:pt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.62, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="grid gap-2.5 sm:grid-cols-3 rounded-2xl border border-white/14 bg-[color-mix(in_oklab,var(--surface)_9%,transparent)] px-4 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.16)] backdrop-blur-[6px]"
+          >
+            {stats.map((item) => (
+              <div key={item.label} className="py-0.5">
+                <div className="font-display text-xl md:text-2xl font-bold text-accent/95">{item.value}</div>
+                <div className="text-xs md:text-sm text-muted/85">{item.label}</div>
+              </div>
+            ))}
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.58, delay: 0.34, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex flex-wrap items-center gap-2"
-        >
-          <span className="w-full text-[11px] uppercase tracking-[0.14em] text-muted/90">Trusted stack</span>
-          {tools.map((tool) => (
-            <span
-              key={tool}
-              className="rounded-lg border border-white/10 bg-[color-mix(in_oklab,var(--surface)_40%,transparent)] px-3 py-1 text-xs text-muted backdrop-blur-md"
-            >
-              {tool}
-            </span>
-          ))}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.58, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-5 flex flex-wrap items-center gap-2"
+          >
+            <span className="w-full text-[10px] uppercase tracking-[0.14em] text-muted/80">Trusted stack</span>
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                className="rounded-lg border border-white/10 bg-[color-mix(in_oklab,var(--surface)_28%,transparent)] px-2.5 py-1 text-[11px] text-muted/85 backdrop-blur-sm"
+              >
+                {tool}
+              </span>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
