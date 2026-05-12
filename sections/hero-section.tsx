@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const HERO_VIDEO = "/hero-video.mp4";
 
-export function HeroSection({ stats, tools }: { stats: { label: string; value: string }[]; tools: string[] }) {
+export function HeroSection({ tools }: { tools: string[] }) {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
@@ -129,24 +129,10 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
 
         <div className="pt-20 md:pt-24">
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.62, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="grid gap-2.5 sm:grid-cols-3 rounded-2xl border border-white/14 bg-[color-mix(in_oklab,var(--surface)_9%,transparent)] px-4 py-3 shadow-[0_10px_28px_rgba(0,0,0,0.16)] backdrop-blur-[6px]"
-          >
-            {stats.map((item) => (
-              <div key={item.label} className="py-0.5">
-                <div className="font-display text-xl md:text-2xl font-bold text-accent/95">{item.value}</div>
-                <div className="text-xs md:text-sm text-muted/85">{item.label}</div>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.58, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 flex flex-wrap items-center gap-2"
+            className="flex flex-wrap items-center gap-2"
           >
             <span className="w-full text-[10px] uppercase tracking-[0.14em] text-muted/80">Trusted stack</span>
             {tools.map((tool) => (

@@ -31,7 +31,7 @@ export default async function HomePage() {
       <MotionEnhancer />
       <Nav />
       <main>
-        <HeroSection stats={data.siteStats} tools={data.tools} />
+        <HeroSection tools={data.tools} />
         <ServicesSection services={data.services} />
         <ProcessAndPricing pricingPlans={data.pricingPlans} />
         <CaseAndTestimonials caseStudies={data.caseStudies} testimonials={data.testimonials} />
