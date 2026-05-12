@@ -111,7 +111,7 @@ export function HeroSection({ stats, tools }: { stats: { label: string; value: s
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.22 }}
-          className="mt-12 grid gap-3 sm:grid-cols-3 rounded-2xl border border-white/15 bg-[color-mix(in_oklab,var(--surface)_28%,transparent)] p-5 shadow-[0_20px_60px_rgba(0,0,0,0.24)] backdrop-blur-md"
+          className="mt-12 grid gap-3 sm:grid-cols-3 rounded-2xl border border-white/20 bg-[color-mix(in_oklab,var(--surface)_14%,transparent)] p-5 shadow-[0_14px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm"
         >
           {stats.map((item) => (
             <div key={item.label}>
