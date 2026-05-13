@@ -11,7 +11,6 @@ import { Button } from "./ui/button";
  */
 export function ContactNudge() {
   const [isVisible, setIsVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     // Check if user has already dismissed this in the session
@@ -28,7 +27,6 @@ export function ContactNudge() {
 
   const handleDismiss = () => {
     setIsVisible(false);
-    setDismissed(true);
     sessionStorage.setItem("contact_nudge_dismissed", "true");
   };
 
@@ -68,7 +66,7 @@ export function ContactNudge() {
               <div className="pr-4">
                 <h4 className="font-display font-bold text-text text-base leading-tight">Need a growth strategy?</h4>
                 <p className="mt-1.5 text-sm text-muted/90 leading-relaxed">
-                  Let's map out your project together. We typically respond within 2 business hours.
+                  Let&apos;s map out your project together. We typically respond within 2 business hours.
                 </p>
                 <Button 
                   onClick={handleContact}
