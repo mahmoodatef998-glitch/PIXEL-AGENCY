@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ContactNudge } from "@/components/contact-nudge";
+
 const fontDisplay = Syne({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -56,6 +60,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
       <body>
         {children}
+        <ContactNudge />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
