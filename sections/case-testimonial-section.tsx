@@ -90,11 +90,11 @@ export function CaseAndTestimonials({
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border/50 to-transparent"
         />
 
         <div className="container relative z-10">
@@ -114,7 +114,7 @@ export function CaseAndTestimonials({
 
                   <div className="relative rounded-[27px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_84%,transparent)] p-6 md:p-7">
                     <div className="mb-4">
-                      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[color-mix(in_oklab,var(--surface)_52%,transparent)] px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-[#F2DBAF] backdrop-blur-md">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-accent backdrop-blur-md">
                         <Sparkles className="size-3.5" />
                         {card.category}
                       </div>
@@ -134,16 +134,16 @@ export function CaseAndTestimonials({
                     </div>
 
                     <div className="mt-5">
-                      <h3 className="font-display text-xl md:text-2xl font-bold leading-tight text-white">{card.title}</h3>
-                      <p className="mt-2 text-sm text-white/75 line-clamp-1">{card.description}</p>
+                      <h3 className="font-display text-xl md:text-2xl font-bold leading-tight text-text">{card.title}</h3>
+                      <p className="mt-2 text-sm text-muted line-clamp-1">{card.description}</p>
                     </div>
 
                     <div className="mt-5 flex items-center justify-between gap-3">
-                      <span className="inline-flex w-fit rounded-full border border-white/16 bg-[color-mix(in_oklab,var(--surface)_60%,transparent)] px-3 py-1 text-xs font-semibold text-accent backdrop-blur-sm">
+                      <span className="inline-flex w-fit rounded-full border border-border bg-surface/50 px-3 py-1 text-xs font-semibold text-accent backdrop-blur-sm">
                         {card.result}
                       </span>
 
-                      <Link href="/#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[#F2DEB6] transition-colors hover:text-accent">
+                      <Link href="/#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-purple">
                         View Case Study
                         <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Link>

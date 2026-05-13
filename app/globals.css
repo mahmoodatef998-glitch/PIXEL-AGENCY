@@ -2,6 +2,7 @@
 @import "../styles/tokens.css";
 
 :root {
+  /* Expert Light Mode Palette (Slate/Sky focus) */
   --bg: #F8FAFC;
   --surface: #FFFFFF;
   --surface2: #F1F5F9;
@@ -13,6 +14,7 @@
 }
 
 .dark {
+  /* Expert Dark Mode Palette (Navy/Cyan focus) */
   --bg: #080C14;
   --surface: #0F1520;
   --surface2: #121a28;
@@ -20,7 +22,7 @@
   --accent: #00E5FF;
   --purple: #7B61FF;
   --text: #F0F4FF;
-  --muted: #8B9AB5;
+  --muted: #94A3B8;
 }
 
 html {
@@ -34,6 +36,8 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {

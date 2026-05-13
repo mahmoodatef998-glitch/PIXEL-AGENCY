@@ -94,7 +94,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             className="mt-6 max-w-[13ch] font-display text-[clamp(2rem,5.6vw,4.25rem)] font-extrabold tracking-tight leading-[0.99] text-text drop-shadow-[0_8px_44px_rgba(0,0,0,0.5)]"
           >
             Brands built to{" "}
-            <span className="bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#A58CFF)] bg-clip-text text-transparent">be seen</span>
+            <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">be seen</span>
           </motion.h1>
 
           <motion.p
@@ -120,7 +120,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             <a href="#case-studies" className="w-full sm:w-auto">
               <Button
                 variant="secondary"
-                className="w-full sm:w-auto border-white/25 bg-[color-mix(in_oklab,var(--surface)_40%,transparent)] hover:border-[#F2D9A6]/60 hover:text-[#F2D9A6]"
+                className="w-full sm:w-auto border-border bg-surface/40 hover:border-accent hover:text-accent"
               >
                 View Our Work
               </Button>

@@ -99,9 +99,9 @@ export function ServicesSection({ services }: { services: Service[] }) {
 
             return (
               <Reveal key={service.title} delay={i * 0.05}>
-                <article className="group relative h-full overflow-hidden rounded-[24px] border border-border bg-surface2/40 p-[1px] shadow-[0_14px_34px_rgba(0,0,0,0.1)] dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)] will-change-transform transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
-                  <div className="absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(120deg,var(--accent),var(--purple))] opacity-20 dark:opacity-40" />
-                  <div className="relative h-full rounded-[23px] border border-border/50 bg-surface/90 p-7">
+                <article className="group relative h-full overflow-hidden rounded-[24px] border border-border bg-surface/40 p-[1px] shadow-sm dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)] will-change-transform transition-all duration-400 hover:-translate-y-1 hover:shadow-md dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                  <div className="absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br from-accent/10 to-purple/10 dark:from-accent/30 dark:to-purple/20" />
+                  <div className="relative h-full rounded-[23px] border border-border/40 bg-surface/95 p-7">
                     <span className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
                     <div className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/15 bg-[linear-gradient(145deg,rgba(255,214,120,0.15),rgba(123,97,255,0.16))] text-[#F6DEAE] shadow-[0_0_24px_rgba(123,97,255,0.22)] transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2">
