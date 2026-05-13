@@ -87,10 +87,3 @@ body {
   }
 }
 
-@media (hover: hover) {
-  .cursor-none-important,
-  .cursor-none-important * {
-    cursor: none !important;
-  }
-}
-

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { CustomCursor } from "@/components/custom-cursor";
 
 const fontDisplay = Syne({
   subsets: ["latin"],
@@ -55,8 +54,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
-      <body className="cursor-none-important">
-        <CustomCursor />
+      <body>
         {children}
       </body>
     </html>
