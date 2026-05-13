@@ -1,6 +1,7 @@
 import { Reveal } from "@/animations/reveal";
 import type { CaseStudy } from "@/types/content";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -108,8 +109,8 @@ export function CaseAndTestimonials({
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {showcaseCards.map((card, i) => (
               <Reveal key={card.key} delay={i * 0.06}>
-                <article className="group relative overflow-hidden rounded-[28px] border border-white/12 bg-[linear-gradient(150deg,rgba(18,26,40,0.72),rgba(12,16,24,0.6))] p-[1px] shadow-[0_16px_40px_rgba(0,0,0,0.28)] backdrop-blur-md transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_22px_56px_rgba(0,0,0,0.34)]">
-                  <div className="absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(122deg,rgba(255,214,120,0.5),rgba(176,140,255,0.35),rgba(92,176,255,0.42))]" />
+                <article className="group relative overflow-hidden rounded-[28px] border border-white/12 bg-[linear-gradient(150deg,rgba(18,26,40,0.92),rgba(12,16,24,0.9))] p-[1px] shadow-[0_16px_40px_rgba(0,0,0,0.28)] will-change-transform transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_22px_56px_rgba(0,0,0,0.34)]">
+                  <div className="absolute inset-0 rounded-[28px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(122deg,rgba(255,214,120,0.35),rgba(176,140,255,0.25),rgba(92,176,255,0.32))]" />
 
                   <div className="relative rounded-[27px] border border-white/8 bg-[color-mix(in_oklab,var(--surface)_84%,transparent)] p-6 md:p-7">
                     <div className="mb-4">
@@ -120,15 +121,16 @@ export function CaseAndTestimonials({
                     </div>
 
                     <div className={`relative overflow-hidden rounded-2xl border border-white/10 min-h-56 md:min-h-64 ${card.glow}`}>
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url('${card.image}')` }}
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 will-change-transform"
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,12,18,0.12)_0%,rgba(10,12,18,0.24)_55%,rgba(10,12,18,0.42)_100%)]" />
                       <div className="absolute inset-0 bg-[radial-gradient(55%_80%_at_18%_15%,rgba(255,214,120,0.12)_0%,rgba(255,214,120,0)_65%),radial-gradient(45%_70%_at_82%_20%,rgba(123,97,255,0.14)_0%,rgba(123,97,255,0)_70%)]" />
                       <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(60%_100%_at_50%_0%,rgba(255,255,255,0.14),rgba(255,255,255,0)_70%)]" />
-                      <div className="pointer-events-none absolute -right-8 top-6 size-24 rounded-full bg-white/10 blur-2xl transition-transform duration-700 group-hover:translate-x-2 group-hover:-translate-y-2" />
-                      <div className="pointer-events-none absolute -left-8 bottom-4 size-20 rounded-full bg-white/8 blur-2xl transition-transform duration-700 group-hover:-translate-x-2 group-hover:translate-y-2" />
                     </div>
 
                     <div className="mt-5">
@@ -174,7 +176,7 @@ export function CaseAndTestimonials({
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {testimonials.map((item, i) => (
             <Reveal key={item.name} delay={i * 0.06}>
-              <article className="glass h-full rounded-2xl border border-border p-6">
+              <article className="h-full rounded-2xl border border-border bg-surface2/80 p-6 will-change-transform shadow-lg">
                 <p className="text-amber-300">★★★★★</p>
                 <p className="mt-3 text-sm text-muted">{item.quote}</p>
                 <div className="mt-5 flex items-center gap-3">
