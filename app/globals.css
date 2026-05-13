@@ -2,6 +2,17 @@
 @import "../styles/tokens.css";
 
 :root {
+  --bg: #FFFFFF;
+  --surface: #F8FAFC;
+  --surface2: #F1F5F9;
+  --border: #E2E8F0;
+  --accent: #00B4D8;
+  --purple: #6D28D9;
+  --text: #0F172A;
+  --muted: #64748B;
+}
+
+.dark {
   --bg: #080C14;
   --surface: #0F1520;
   --surface2: #121a28;
@@ -60,6 +71,22 @@ body {
 .hero-ken {
   animation: heroKen 28s ease-in-out infinite alternate;
   will-change: transform;
+}
+
+.cinematic-overlay-dark {
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.24) 38%, rgba(7, 9, 14, 0.68) 82%, #080C14 100%);
+}
+
+.cinematic-overlay-light {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.6) 80%, #FFFFFF 100%);
+}
+
+.dark .cinematic-overlay {
+  background: linear-gradient(180deg, rgba(7, 9, 14, 0.54) 0%, rgba(7, 9, 14, 0.24) 38%, rgba(7, 9, 14, 0.68) 82%, #080C14 100%);
+}
+
+.light .cinematic-overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.6) 80%, #FFFFFF 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

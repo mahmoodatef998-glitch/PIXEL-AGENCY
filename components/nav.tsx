@@ -3,6 +3,7 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -31,9 +32,12 @@ export function Nav() {
           ))}
         </nav>
 
-        <a className="hidden lg:block" href="#contact">
-          <Button>Get Free Strategy Call</Button>
-        </a>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a className="hidden lg:block" href="#contact">
+            <Button>Get Free Strategy Call</Button>
+          </a>
+        </div>
 
         <button
           className="md:hidden rounded-lg border border-border p-2 text-muted hover:text-accent active:scale-95 transition-transform"
