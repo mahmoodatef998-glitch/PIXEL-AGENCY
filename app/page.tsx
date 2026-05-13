@@ -18,9 +18,14 @@ export default async function HomePage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "PixelPulse Agency",
+    name: "PixelPulse Agency Dubai",
     url: "https://pixelpulse.agency",
-    description: "Full growth infrastructure partner: marketing + technology + automation.",
+    description: "Best creative marketing agency in Dubai. Specialists in social media, performance ads, and custom systems for UAE businesses.",
+    address: {
+      "@type": "PostalAddress",
+      "addressLocality": "Dubai",
+      "addressCountry": "AE"
+    },
     sameAs: ["https://www.instagram.com/", "https://www.linkedin.com/"]
   };
 

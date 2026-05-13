@@ -42,7 +42,7 @@ export const services: Service[] = [
     title: "Website Development",
     short: "Custom high-converting websites, not templates.",
     description:
-      "Fast, mobile-first websites and landing pages designed around conversion pathways and SEO architecture.",
+      "Fast, mobile-first websites and landing pages designed for Dubai brands, focused on conversion pathways and SEO architecture.",
     painPoints: ["Slow website", "Low conversion rate", "Poor UX on mobile", "SEO structure issues"],
     process: ["Discovery + wireframes", "UI system + copy structure", "Build + performance QA", "Launch + analytics handoff"],
     faq: [
@@ -103,7 +103,7 @@ export const services: Service[] = [
     process: ["Offer + audience strategy", "Landing + tracking build", "Campaign execution", "Pipeline optimization"],
     faq: [
       { q: "Do you guarantee lead volume?", a: "We guarantee disciplined execution and measurable reporting cadence." },
-      { q: "Can this work for local UAE businesses?", a: "Yes. We tailor channels and messaging for local demand patterns." }
+      { q: "Can this work for local UAE businesses?", a: "Yes. We tailor channels and messaging specifically for Dubai and UAE market demand patterns." }
     ],
     cta: "Launch my lead engine"
   }

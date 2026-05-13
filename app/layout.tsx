@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { CustomCursor } from "@/components/custom-cursor";
 
 const fontDisplay = Syne({
   subsets: ["latin"],
@@ -17,33 +18,34 @@ const fontBody = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pixelpulse.agency"),
   title: {
-    default: "PixelPulse Agency | Full Growth Infrastructure Partner",
-    template: "%s | PixelPulse Agency"
+    default: "PixelPulse Agency | Best Marketing Agency in Dubai & UAE",
+    template: "%s | PixelPulse Agency Dubai"
   },
   description:
-    "Marketing + Technology under one roof. Social, paid ads, custom websites, CRM, ERP, and automation — built to turn attention into revenue.",
+    "PixelPulse is the leading creative growth agency in Dubai. We provide social media management, performance marketing, and custom web systems for UAE brands.",
   keywords: [
-    "marketing agency UAE",
-    "media buying",
-    "social media management",
-    "website development",
-    "CRM development",
-    "ERP development",
-    "lead generation agency"
+    "marketing agency Dubai",
+    "best marketing agency UAE",
+    "social media management Dubai",
+    "performance marketing UAE",
+    "digital marketing Dubai",
+    "وكالة تسويق في دبي",
+    "أفضل وكالة تسويق في الإمارات",
+    "إدارة حسابات التواصل الاجتماعي دبي"
   ],
   openGraph: {
     type: "website",
-    title: "PixelPulse Agency",
+    title: "PixelPulse Agency | Creative Growth Studio Dubai",
     description:
-      "Most agencies give you posts. We build your entire growth engine: campaigns + website + CRM + ERP.",
+      "Most agencies give you posts. We build your entire growth engine in Dubai: campaigns + systems + automation.",
     url: "https://pixelpulse.agency",
-    siteName: "PixelPulse Agency"
+    siteName: "PixelPulse Agency Dubai"
   },
   twitter: {
     card: "summary_large_image",
-    title: "PixelPulse Agency",
+    title: "PixelPulse Agency Dubai",
     description:
-      "A full growth infrastructure partner — marketing + systems + automation."
+      "A full growth infrastructure partner in Dubai — marketing + systems + automation."
   },
   alternates: {
     canonical: "https://pixelpulse.agency"
@@ -53,7 +55,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`}>
-      <body>{children}</body>
+      <body className="cursor-none-important">
+        <CustomCursor />
+        {children}
+      </body>
     </html>
   );
 }
