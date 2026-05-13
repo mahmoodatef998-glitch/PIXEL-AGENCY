@@ -130,14 +130,14 @@ function SelectField({
       <select
         name={name}
         required={required}
-        className="w-full rounded-xl border border-border bg-bg px-3 py-2 text-sm outline-none ring-accent transition focus:ring-2"
+        className="w-full rounded-xl border border-border bg-white px-3 py-2 text-sm text-black outline-none ring-accent transition focus:ring-2 cursor-pointer"
         defaultValue=""
       >
-        <option value="" disabled>
+        <option value="" disabled className="text-gray-400">
           Select...
         </option>
         {options.map((option) => (
-          <option key={option} value={option}>
+          <option key={option} value={option} className="text-black">
             {option}
           </option>
         ))}
