@@ -21,7 +21,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
-  text-rendering: geometricPrecision;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -36,8 +37,8 @@ body {
 .glass {
   background: color-mix(in oklab, var(--surface) 72%, transparent);
   border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .gradient-text {

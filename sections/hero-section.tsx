@@ -15,7 +15,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
       {/* Cinematic video background */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <video
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${videoReady ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 will-change-transform ${videoReady ? "opacity-100" : "opacity-0"}`}
           autoPlay
           muted
           loop
@@ -37,23 +37,23 @@ export function HeroSection({ tools }: { tools: string[] }) {
       {/* Cinematic overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,9,14,0.54)_0%,rgba(7,9,14,0.24)_38%,rgba(7,9,14,0.68)_82%,#080C14_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,9,14,0.54)_0%,rgba(7,9,14,0.24)_38%,rgba(7,9,14,0.68)_82%,#080C14_100%)] will-change-transform"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(112deg,rgba(10,12,18,0.78)_0%,rgba(10,12,18,0.32)_42%,rgba(10,12,18,0.08)_70%,rgba(10,12,18,0.24)_100%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(112deg,rgba(10,12,18,0.78)_0%,rgba(10,12,18,0.32)_42%,rgba(10,12,18,0.08)_70%,rgba(10,12,18,0.24)_100%)] will-change-transform"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(58%_70%_at_16%_18%,rgba(255,214,120,0.12)_0%,rgba(255,214,120,0)_64%),radial-gradient(52%_60%_at_82%_20%,rgba(123,97,255,0.18)_0%,rgba(123,97,255,0)_68%)]"
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(58%_70%_at_16%_18%,rgba(255,214,120,0.12)_0%,rgba(255,214,120,0)_64%),radial-gradient(52%_60%_at_82%_20%,rgba(123,97,255,0.18)_0%,rgba(123,97,255,0)_68%)] will-change-transform"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_180px_rgba(0,0,0,0.6)]"
+        className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_180px_rgba(0,0,0,0.6)] will-change-transform"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.04] bg-[linear-gradient(rgba(240,244,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(240,244,255,0.1)_1px,transparent_1px)] bg-[length:56px_56px]"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.04] bg-[linear-gradient(rgba(240,244,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(240,244,255,0.1)_1px,transparent_1px)] bg-[length:56px_56px] will-change-transform"
       />
 
       {/* Floating particles / ambient orbs */}
