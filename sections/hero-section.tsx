@@ -76,7 +76,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container relative z-10 min-h-[92svh] md:min-h-screen py-14 md:py-20 flex flex-col justify-between">
+      <div className="container relative z-10 min-h-[92svh] md:min-h-screen py-14 md:py-24 flex flex-col justify-end">
         <div className="max-w-3xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -84,14 +84,14 @@ export function HeroSection({ tools }: { tools: string[] }) {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-2 text-xs text-muted backdrop-blur-md"
           >
-            <span className="text-[#F2D9A6] font-semibold">Creative Growth Studio</span> Cinematic strategy. Measurable performance.
+            <span className="text-accent font-semibold">Creative Growth Studio</span> Cinematic strategy. Measurable performance.
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 max-w-[13ch] font-display text-[clamp(2rem,5.6vw,4.25rem)] font-extrabold tracking-tight leading-[0.99] text-text drop-shadow-[0_8px_44px_rgba(0,0,0,0.5)]"
+            className="mt-6 max-w-[13ch] font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold tracking-tight leading-[0.95] text-text"
           >
             Brands built to{" "}
             <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">be seen</span>
@@ -101,7 +101,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.72, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-4 max-w-xl text-[clamp(0.96rem,1.75vw,1.08rem)] text-muted/92 drop-shadow-[0_4px_18px_rgba(0,0,0,0.38)]"
+            className="mt-6 max-w-xl text-[clamp(1rem,1.8vw,1.15rem)] text-muted font-medium"
           >
             Where strategy meets cinematic storytelling.
           </motion.p>
@@ -113,7 +113,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3"
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <Button className="w-full sm:w-auto shadow-[0_0_24px_rgba(0,229,255,0.2)]">
+              <Button className="w-full sm:w-auto shadow-lg shadow-accent/20">
                 Start Your Project <ArrowRight className="size-4" />
               </Button>
             </a>
@@ -128,22 +128,25 @@ export function HeroSection({ tools }: { tools: string[] }) {
           </motion.div>
         </div>
 
-        <div className="pt-14 md:pt-20">
+        <div className="mt-16 md:mt-20 pt-8 border-t border-border/30">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.58, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-wrap items-center gap-2"
+            className="flex flex-wrap items-center gap-x-6 gap-y-4"
           >
-            <span className="w-full text-[10px] uppercase tracking-[0.14em] text-muted/80">Trusted stack</span>
-            {tools.map((tool) => (
-              <span
-                key={tool}
-                className="rounded-lg border border-border bg-surface/50 px-2.5 py-1 text-[11px] text-muted backdrop-blur-sm"
-              >
-                {tool}
-              </span>
-            ))}
+            <span className="text-[10px] uppercase tracking-[0.2em] text-muted font-bold">Trusted stack</span>
+            <div className="flex flex-wrap items-center gap-3">
+              {tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="text-[11px] font-semibold text-muted/80 flex items-center gap-2"
+                >
+                  <span className="size-1 rounded-full bg-accent/40" />
+                  {tool}
+                </span>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>
