@@ -30,18 +30,18 @@ export function HeroSection({ tools }: { tools: string[] }) {
 
         {/* Fallback while video loads */}
         <div
-          className={`absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(123,97,255,0.35)_0%,rgba(123,97,255,0)_52%),radial-gradient(circle_at_82%_28%,rgba(0,229,255,0.2)_0%,rgba(0,229,255,0)_56%),linear-gradient(145deg,#090d15_0%,#0f1725_55%,#0a0f17_100%)] transition-opacity duration-1000 ${videoReady ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 bg-surface transition-opacity duration-1000 ${videoReady ? "opacity-0" : "opacity-100"}`}
         />
       </div>
 
       {/* Cinematic overlays */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,9,14,0.54)_0%,rgba(7,9,14,0.24)_38%,rgba(7,9,14,0.68)_82%,#080C14_100%)] will-change-transform"
+        className="pointer-events-none absolute inset-0 z-[1] cinematic-overlay will-change-transform"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(112deg,rgba(10,12,18,0.78)_0%,rgba(10,12,18,0.32)_42%,rgba(10,12,18,0.08)_70%,rgba(10,12,18,0.24)_100%)] will-change-transform"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-50 dark:opacity-100 bg-[linear-gradient(112deg,rgba(10,12,18,0.78)_0%,rgba(10,12,18,0.32)_42%,rgba(10,12,18,0.08)_70%,rgba(10,12,18,0.24)_100%)] will-change-transform"
       />
       <div
         aria-hidden
@@ -49,7 +49,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_180px_rgba(0,0,0,0.6)] will-change-transform"
+        className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_180px_rgba(0,0,0,0.6)] dark:block hidden will-change-transform"
       />
       <div
         aria-hidden
@@ -82,7 +82,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-[color-mix(in_oklab,var(--surface)_46%,transparent)] px-4 py-2 text-xs text-muted backdrop-blur-md"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-2 text-xs text-muted backdrop-blur-md"
           >
             <span className="text-[#F2D9A6] font-semibold">Creative Growth Studio</span> Cinematic strategy. Measurable performance.
           </motion.div>
@@ -139,7 +139,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             {tools.map((tool) => (
               <span
                 key={tool}
-                className="rounded-lg border border-white/10 bg-[color-mix(in_oklab,var(--surface)_28%,transparent)] px-2.5 py-1 text-[11px] text-muted/85 backdrop-blur-sm"
+                className="rounded-lg border border-border bg-surface/50 px-2.5 py-1 text-[11px] text-muted backdrop-blur-sm"
               >
                 {tool}
               </span>

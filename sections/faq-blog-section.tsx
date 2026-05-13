@@ -20,7 +20,7 @@ export function FaqAndBlogSection({
           <div className="mt-6 space-y-3">
             {faqs.map((faq, i) => (
               <Reveal key={faq.q} delay={i * 0.04}>
-                <article className="rounded-xl border border-border bg-bg p-4">
+                <article className="rounded-xl border border-border bg-surface2/30 p-4">
                   <h3 className="text-sm font-semibold">{faq.q}</h3>
                   <p className="mt-2 text-sm text-muted">{faq.a}</p>
                 </article>
@@ -37,7 +37,7 @@ export function FaqAndBlogSection({
           <div className="mt-6 space-y-3">
             {posts.slice(0, 3).map((post, i) => (
               <Reveal key={post.slug} delay={i * 0.04}>
-                <Link href={`/blog/${post.slug}`} className="block rounded-xl border border-border bg-bg p-4 transition hover:border-accent">
+                <Link href={`/blog/${post.slug}`} className="block rounded-xl border border-border bg-surface2/30 p-4 transition hover:border-accent">
                   <p className="text-xs uppercase tracking-[0.08em] text-purple">
                     {post.category} • {post.readTime}
                   </p>

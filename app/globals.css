@@ -2,14 +2,14 @@
 @import "../styles/tokens.css";
 
 :root {
-  --bg: #FFFFFF;
-  --surface: #F8FAFC;
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
   --surface2: #F1F5F9;
   --border: #E2E8F0;
-  --accent: #00B4D8;
-  --purple: #6D28D9;
+  --accent: #0284C7;
+  --purple: #7C3AED;
   --text: #0F172A;
-  --muted: #64748B;
+  --muted: #475569;
 }
 
 .dark {

@@ -24,7 +24,7 @@ export function ProcessAndPricing({
               ["Scale", "Monthly strategy loops tied to revenue outcomes."]
             ].map(([title, desc], idx) => (
               <Reveal key={title} delay={idx * 0.06}>
-                <article className="rounded-2xl border border-border bg-bg p-5">
+                <article className="rounded-2xl border border-border bg-surface2/50 p-5">
                   <div className="mb-3 inline-flex size-9 items-center justify-center rounded-full border border-accent text-sm font-bold text-accent">
                     {idx + 1}
                   </div>
@@ -53,8 +53,8 @@ export function ProcessAndPricing({
               <article
                 className={`relative h-full rounded-2xl border p-6 overflow-hidden ${
                   plan.featured
-                    ? "border-accent bg-[color-mix(in_oklab,var(--accent)_10%,var(--surface))] shadow-glow"
-                    : "glass border-border hover:border-[color-mix(in_oklab,var(--accent)_40%,var(--border))]"
+                    ? "border-accent bg-accent/5 dark:bg-accent/10 shadow-glow"
+                    : "border-border hover:border-accent bg-surface/50"
                 }`}
               >
                 <div
