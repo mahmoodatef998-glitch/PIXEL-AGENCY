@@ -112,25 +112,27 @@ export const services: Service[] = [
 export const caseStudies: CaseStudy[] = [
   {
     slug: "restaurant-meta-growth",
-    industry: "Restaurant",
+    industry: "Restaurants & Cafes",
     title: "3x more reservations in 60 days",
     challenge: "Low weekday bookings and inconsistent creative output.",
     solution: "Localized Meta campaigns + short-form content + CRM follow-up sequence.",
-    result: "3x reservations in 60 days",
+    result: "3x reservation volume uplift",
     metric: "Cost per booking reduced 38%",
     quote: "Finally, ad spend turned into booked tables.",
-    author: "Marco V. — Owner"
+    author: "Marco V. — Owner",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1280&q=72"
   },
   {
     slug: "real-estate-crm",
-    industry: "Real Estate",
+    industry: "Luxury Real Estate",
     title: "Lead response time reduced by 80%",
     challenge: "Leads were spread across channels with no fast assignment workflow.",
     solution: "Custom CRM with auto-routing, reminders, and pipeline dashboards.",
     result: "80% faster first response",
     metric: "Qualified appointments up 42%",
     quote: "We stopped losing hot leads to faster competitors.",
-    author: "Dana E. — Managing Broker"
+    author: "Dana E. — Managing Broker",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1280&q=72"
   },
   {
     slug: "retail-google-shopping",
@@ -141,7 +143,8 @@ export const caseStudies: CaseStudy[] = [
     result: "450% ROAS",
     metric: "Revenue per click up 31%",
     quote: "We scaled confidently because the numbers made sense.",
-    author: "Priya N. — Founder"
+    author: "Priya N. — Founder",
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1280&q=72"
   }
 ];
 

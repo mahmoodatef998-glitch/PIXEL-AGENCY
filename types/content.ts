@@ -30,5 +30,6 @@ export type CaseStudy = {
   metric: string;
   quote: string;
   author: string;
+  image?: string;
 };
 

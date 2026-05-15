@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const HERO_VIDEO = "/hero-video.mp4";
 
-export function HeroSection({ tools }: { tools: string[] }) {
+export function HeroSection({ tools, stats }: { tools: string[]; stats: { label: string; value: string }[] }) {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
@@ -127,6 +127,24 @@ export function HeroSection({ tools }: { tools: string[] }) {
                 </Button>
               </a>
             </motion.div>
+
+            {stats.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-10 flex flex-wrap gap-x-8 gap-y-4"
+              >
+                {stats.map((stat) => (
+                  <div key={stat.label} className="flex flex-col">
+                    <span className="font-display text-2xl font-extrabold tracking-tight text-text">
+                      {stat.value}
+                    </span>
+                    <span className="mt-0.5 text-xs text-muted/80 uppercase tracking-[0.14em]">{stat.label}</span>
+                  </div>
+                ))}
+              </motion.div>
+            )}
           </div>
         </div>
       </section>

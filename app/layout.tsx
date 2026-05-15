@@ -43,7 +43,15 @@ export const metadata: Metadata = {
     description:
       "Most agencies give you posts. We build your entire growth engine in Dubai: campaigns + systems + automation.",
     url: "https://pixelpulse.agency",
-    siteName: "PixelPulse Agency Dubai"
+    siteName: "PixelPulse Agency Dubai",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "PixelPulse Agency — Creative Growth Studio Dubai"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",

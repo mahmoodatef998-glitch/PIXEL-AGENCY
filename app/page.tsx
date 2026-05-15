@@ -15,18 +15,25 @@ export default async function HomePage() {
   const data = await getHomepageContent();
   const posts = await getBlogPosts();
 
+  const socialProfiles = [
+    process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+    process.env.NEXT_PUBLIC_LINKEDIN_URL,
+    process.env.NEXT_PUBLIC_TIKTOK_URL
+  ].filter(Boolean);
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "PixelPulse Agency Dubai",
     url: "https://pixelpulse.agency",
+    logo: "https://pixelpulse.agency/og-image.png",
     description: "Best creative marketing agency in Dubai. Specialists in social media, performance ads, and custom systems for UAE businesses.",
     address: {
       "@type": "PostalAddress",
       "addressLocality": "Dubai",
       "addressCountry": "AE"
     },
-    sameAs: ["https://www.instagram.com/", "https://www.linkedin.com/"]
+    ...(socialProfiles.length > 0 && { sameAs: socialProfiles })
   };
 
   return (
@@ -36,7 +43,7 @@ export default async function HomePage() {
       <MotionEnhancer />
       <Nav />
       <main>
-        <HeroSection tools={data.tools} />
+        <HeroSection tools={data.tools} stats={data.siteStats} />
         <ServicesSection services={data.services} />
         <ProcessAndPricing pricingPlans={data.pricingPlans} />
         <CaseAndTestimonials caseStudies={data.caseStudies} testimonials={data.testimonials} />
