@@ -91,12 +91,12 @@ export function CaseAndTestimonials({
 
         <div className="container relative z-10">
           <Reveal className="text-center">
-            <p className="text-xs uppercase tracking-[0.18em] text-accent">Industries We Grow</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-accent">Market Expertise</p>
             <h2 className="mt-3 font-display text-3xl md:text-5xl font-extrabold tracking-tight text-text">
-              Our Previous Work
+              Sectors We Dominate
             </h2>
             <p className="mx-auto mt-4 max-w-2xl bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#9B8CFF,#89DAFF)] bg-clip-text text-sm md:text-base font-medium text-transparent">
-              Premium campaigns crafted for the most competitive industries in UAE and beyond.
+              Deep industry knowledge, proven results, and campaigns built for the most competitive markets in UAE and beyond.
             </p>
           </Reveal>
 
