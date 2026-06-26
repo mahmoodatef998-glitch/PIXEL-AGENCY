@@ -1,9 +1,6 @@
-import { Footer } from "@/components/footer";
-import { FloatingCTA } from "@/components/floating-cta";
-import { MotionEnhancer } from "@/components/motion-enhancer";
-import { Nav } from "@/components/nav";
-import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import { getBlogPosts, getHomepageContent } from "@/lib/content";
+import { buildFaqSchema, jsonLdScript } from "@/lib/json-ld";
+import { siteConfig } from "@/lib/site-config";
 import { CaseAndTestimonials } from "@/sections/case-testimonial-section";
 import { ContactSection } from "@/sections/contact-section";
 import { FaqAndBlogSection } from "@/sections/faq-blog-section";
@@ -19,22 +16,23 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "PixelPulse Agency Dubai",
-    url: "https://pixelpulse.agency",
-    description: "Best creative marketing agency in Dubai. Specialists in social media, performance ads, and custom systems for UAE businesses.",
+    url: siteConfig.url,
+    description: siteConfig.description,
+    email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
-      "addressLocality": "Dubai",
-      "addressCountry": "AE"
+      addressLocality: "Dubai",
+      addressCountry: "AE"
     },
-    sameAs: ["https://www.instagram.com/", "https://www.linkedin.com/"]
+    sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin]
   };
+
+  const faqSchema = buildFaqSchema(data.faqItems);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
-      <SmoothScrollProvider />
-      <MotionEnhancer />
-      <Nav />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(organizationSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(faqSchema)} />
       <main>
         <HeroSection tools={data.tools} />
         <ServicesSection services={data.services} />
@@ -43,9 +41,6 @@ export default async function HomePage() {
         <FaqAndBlogSection faqs={data.faqItems} posts={posts} />
         <ContactSection />
       </main>
-      <Footer />
-      <FloatingCTA />
     </>
   );
 }
-

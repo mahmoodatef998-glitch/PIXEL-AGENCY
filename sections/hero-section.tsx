@@ -21,7 +21,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             poster="/hero-poster.png"
             onCanPlay={() => setVideoReady(true)}
             onLoadedData={() => setVideoReady(true)}

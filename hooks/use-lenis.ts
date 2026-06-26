@@ -5,12 +5,15 @@ import Lenis from "lenis";
 
 export function useLenis() {
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
     const lenis = new Lenis({
-      duration: 0.8, // Faster scroll response
-      lerp: 0.1,    // More direct feedback
+      duration: 0.8,
+      lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.5 // Better responsiveness on mobile
+      touchMultiplier: 1.5
     });
 
     let raf = 0;
@@ -26,4 +29,3 @@ export function useLenis() {
     };
   }, []);
 }
-

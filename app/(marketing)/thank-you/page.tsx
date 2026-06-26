@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2, ArrowLeft, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThankYouTracker } from "@/components/thank-you-tracker";
 
 export const metadata = {
   title: "Thank you"
@@ -9,6 +10,7 @@ export const metadata = {
 export default function ThankYouPage() {
   return (
     <main className="container py-20">
+      <ThankYouTracker />
       <div className="mx-auto max-w-2xl">
         <div className="glass rounded-2xl border border-border p-8 md:p-10">
           <div className="flex items-start gap-4">
@@ -66,4 +68,3 @@ export default function ThankYouPage() {
     </main>
   );
 }
-

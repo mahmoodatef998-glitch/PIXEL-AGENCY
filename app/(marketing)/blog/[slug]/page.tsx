@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/content";
+import { buildArticleSchema, jsonLdScript } from "@/lib/json-ld";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -16,7 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` }
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.publishedAt
+    }
   };
 }
 
@@ -25,8 +32,11 @@ export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPostBySlug(slug);
   if (!post) notFound();
 
+  const articleSchema = buildArticleSchema(post);
+
   return (
     <main className="container py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(articleSchema)} />
       <p className="text-xs uppercase tracking-[0.1em] text-purple">
         {post.category} • {post.readTime}
       </p>
@@ -36,8 +46,8 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="h-full w-1/2 bg-accent" />
       </div>
       <article className="prose prose-invert mt-8 max-w-3xl">
-        {post.content.map((paragraph) => (
-          <p key={paragraph} className="mt-4 text-base text-muted leading-7">
+        {post.content.map((paragraph, index) => (
+          <p key={`${post.slug}-p-${index}`} className="mt-4 text-base text-muted leading-7">
             {paragraph}
           </p>
         ))}
@@ -45,4 +55,3 @@ export default async function BlogPostPage({ params }: Props) {
     </main>
   );
 }
-

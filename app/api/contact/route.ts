@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { kv } from "@vercel/kv";
 import { z } from "zod";
 
 const leadSchema = z.object({
@@ -16,16 +15,21 @@ function getClientIp(req: NextRequest) {
   return ip && ip.length > 0 ? ip : "unknown";
 }
 
-async function checkRateLimitOrThrow(ip: string) {
+// In-memory rate limiter (resets on cold start; good enough without KV)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimitOrThrow(ip: string) {
   const windowSeconds = Number(process.env.CONTACT_RATE_LIMIT_WINDOW_SECONDS ?? "600");
   const max = Number(process.env.CONTACT_RATE_LIMIT_MAX ?? "6");
+  const now = Date.now();
 
-  const key = `rate:contact:${ip}`;
-  const count = await kv.incr(key);
-  if (count === 1) {
-    await kv.expire(key, windowSeconds);
+  const entry = rateLimitMap.get(ip);
+  if (!entry || entry.resetAt < now) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + windowSeconds * 1000 });
+    return;
   }
-  if (count > max) {
+  entry.count++;
+  if (entry.count > max) {
     throw new Error("RATE_LIMITED");
   }
 }
@@ -91,7 +95,7 @@ async function sendLeadEmail(lead: {
 export async function POST(req: NextRequest) {
   try {
     const ip = getClientIp(req);
-    await checkRateLimitOrThrow(ip);
+    checkRateLimitOrThrow(ip);
 
     const json = await req.json();
     const parsed = leadSchema.safeParse(json);
@@ -106,10 +110,6 @@ export async function POST(req: NextRequest) {
       createdAt: new Date().toISOString(),
       ip
     };
-
-    await kv.set(`lead:${lead.id}`, lead, { ex: 60 * 60 * 24 * 30 });
-    await kv.lpush("leads:latest", lead.id);
-    await kv.ltrim("leads:latest", 0, 199);
 
     await sendLeadEmail(lead);
 

@@ -4,8 +4,10 @@ import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { ContactNudge } from "@/components/contact-nudge";
 import { ThemeProvider } from "@/components/theme-provider";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 const fontDisplay = Syne({
   subsets: ["latin"],
@@ -20,13 +22,12 @@ const fontBody = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pixelpulse.agency"),
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: "PixelPulse Agency | Best Marketing Agency in Dubai & UAE",
     template: "%s | PixelPulse Agency Dubai"
   },
-  description:
-    "PixelPulse is the leading creative growth agency in Dubai. We provide social media management, performance marketing, and custom web systems for UAE brands.",
+  description: siteConfig.description,
   keywords: [
     "marketing agency Dubai",
     "best marketing agency UAE",
@@ -39,20 +40,29 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
+    locale: siteConfig.locale,
     title: "PixelPulse Agency | Creative Growth Studio Dubai",
     description:
       "Most agencies give you posts. We build your entire growth engine in Dubai: campaigns + systems + automation.",
-    url: "https://pixelpulse.agency",
-    siteName: "PixelPulse Agency Dubai"
+    url: siteConfig.url,
+    siteName: "PixelPulse Agency Dubai",
+    images: [
+      {
+        url: absoluteUrl("/opengraph-image"),
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "PixelPulse Agency Dubai",
-    description:
-      "A full growth infrastructure partner in Dubai — marketing + systems + automation."
+    description: "A full growth infrastructure partner in Dubai — marketing + systems + automation.",
+    images: [absoluteUrl("/opengraph-image")]
   },
   alternates: {
-    canonical: "https://pixelpulse.agency"
+    canonical: siteConfig.url
   }
 };
 
@@ -61,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${fontDisplay.variable} ${fontBody.variable}`} suppressHydrationWarning>
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <AnalyticsScripts />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"

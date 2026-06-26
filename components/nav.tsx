@@ -1,16 +1,18 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { trackEvent } from "@/lib/analytics";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#how-we-work", label: "How We Work" },
-  { href: "#packages", label: "Packages" },
-  { href: "#case-studies", label: "Case Studies" },
-  { href: "#contact", label: "Contact" }
+  { href: "/#services", label: "Services" },
+  { href: "/#how-we-work", label: "How We Work" },
+  { href: "/#packages", label: "Packages" },
+  { href: "/#case-studies", label: "Case Studies" },
+  { href: "/#contact", label: "Contact" }
 ];
 
 export function Nav() {
@@ -19,24 +21,28 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 px-3 md:px-4 py-2.5 md:py-3">
       <div className="container glass rounded-full px-4 md:px-5 py-2.5 md:py-3 flex items-center justify-between gap-3 md:gap-4">
-        <a href="#top" className="font-display font-extrabold tracking-tight flex items-center gap-2">
+        <Link href="/" className="font-display font-extrabold tracking-tight flex items-center gap-2">
           <span className="size-2 rounded-full bg-accent shadow-[0_0_14px_rgba(0,229,255,0.9)]" />
           PixelPulse
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-muted">
           {links.map((link) => (
-            <a key={link.href} className="hover:text-accent transition" href={link.href}>
+            <Link key={link.href} className="hover:text-accent transition" href={link.href}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a className="hidden lg:block" href="#contact">
+          <Link
+            className="hidden lg:block"
+            href="/#contact"
+            onClick={() => trackEvent("strategy_call_click", { location: "nav" })}
+          >
             <Button>Get Free Strategy Call</Button>
-          </a>
+          </Link>
         </div>
 
         <button
@@ -53,22 +59,27 @@ export function Nav() {
         <div className="container mt-2.5 glass rounded-xl p-3 md:hidden">
           <div className="flex flex-col gap-2">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="rounded-lg px-3 py-2 text-sm text-muted hover:bg-surface2 hover:text-accent"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a href="#contact" onClick={() => setOpen(false)}>
+            <Link
+              href="/#contact"
+              onClick={() => {
+                setOpen(false);
+                trackEvent("strategy_call_click", { location: "nav_mobile" });
+              }}
+            >
               <Button className="w-full">Get Free Strategy Call</Button>
-            </a>
+            </Link>
           </div>
         </div>
       )}
     </header>
   );
 }
-

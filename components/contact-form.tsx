@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 
 type Status = { type: "idle" | "success" | "error"; message?: string };
 
@@ -24,6 +25,7 @@ export function ContactForm() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.message || "Could not submit form.");
+      trackEvent("form_submit", { location: "contact_form" });
       setStatus({ type: "success", message: data.message });
       formRef.current?.reset();
       router.push("/thank-you");
@@ -130,14 +132,14 @@ function SelectField({
       <select
         name={name}
         required={required}
-        className="w-full rounded-xl border border-border bg-white px-3 py-2 text-sm text-black outline-none ring-accent transition focus:ring-2 cursor-pointer"
+        className="w-full rounded-xl border border-border bg-bg px-3 py-2 text-sm text-text outline-none ring-accent transition focus:ring-2 cursor-pointer"
         defaultValue=""
       >
-        <option value="" disabled className="text-gray-400">
+        <option value="" disabled>
           Select...
         </option>
         {options.map((option) => (
-          <option key={option} value={option} className="text-black">
+          <option key={option} value={option}>
             {option}
           </option>
         ))}

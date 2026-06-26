@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { getServiceBySlug, getServices } from "@/lib/content";
+import { jsonLdScript } from "@/lib/json-ld";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -17,7 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.title,
     description: service.description,
-    alternates: { canonical: `/services/${service.slug}` }
+    alternates: { canonical: `/services/${service.slug}` },
+    openGraph: {
+      title: service.title,
+      description: service.description
+    }
   };
 }
 
@@ -36,7 +41,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <main className="container py-20">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
       <p className="text-xs uppercase tracking-[0.14em] text-accent">Service Page</p>
       <h1 className="mt-2 font-display text-4xl md:text-6xl font-extrabold tracking-tight">{service.title}</h1>
       <p className="mt-4 max-w-3xl text-lg text-muted">{service.description}</p>
@@ -82,4 +87,3 @@ export default async function ServiceDetailPage({ params }: Props) {
     </main>
   );
 }
-

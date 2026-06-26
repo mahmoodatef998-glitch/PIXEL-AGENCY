@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -11,25 +12,25 @@ export function Footer() {
         <div>
           <p className="text-xs uppercase tracking-[0.16em] text-muted">Links</p>
           <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
-            <a href="#services" className="hover:text-accent">
+            <Link href="/#services" className="hover:text-accent">
               Services
-            </a>
-            <a href="#packages" className="hover:text-accent">
+            </Link>
+            <Link href="/#packages" className="hover:text-accent">
               Pricing
-            </a>
+            </Link>
             <Link href="/blog" className="hover:text-accent">
               Blog
             </Link>
-            <a href="#contact" className="hover:text-accent">
+            <Link href="/#contact" className="hover:text-accent">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.16em] text-muted">Lead Channels</p>
           <div className="mt-3 text-sm text-muted space-y-2">
-            <p>Email: hello@pixelpulse.agency</p>
-            <p>WhatsApp: +971 50 000 0000</p>
+            <p>Email: {siteConfig.email}</p>
+            <p>WhatsApp: {siteConfig.whatsapp}</p>
             <p>Response time: within 2 business hours</p>
           </div>
         </div>
