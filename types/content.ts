@@ -32,3 +32,19 @@ export type CaseStudy = {
   author: string;
 };
 
+export type PortfolioProject = {
+  slug: string;
+  category: string;
+  client: string;
+  title: string;
+  summary: string;
+  challenge: string;
+  solution: string;
+  results: string[];
+  coverImage: string;
+  gallery: string[];
+  videoUrl?: string;
+  /** True until the real client assets replace this sample entry. */
+  isPlaceholder?: boolean;
+};
+

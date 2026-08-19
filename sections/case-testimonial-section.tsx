@@ -143,7 +143,7 @@ export function CaseAndTestimonials({
                         {card.result}
                       </span>
 
-                      <Link href="/#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-purple">
+                      <Link href="/work" className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-purple">
                         View Case Study
                         <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Link>

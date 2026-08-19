@@ -1,17 +1,24 @@
 import type { MetadataRoute } from "next";
-import { getBlogPosts, getServices } from "@/lib/content";
+import { getBlogPosts, getPortfolioProjects, getServices } from "@/lib/content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://pixelpulse.agency";
   const services = await getServices();
   const posts = await getBlogPosts();
+  const projects = await getPortfolioProjects();
 
   return [
     { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/services`, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/work`, changeFrequency: "weekly", priority: 0.85 },
     { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.85 },
     ...services.map((service) => ({
       url: `${base}/services/${service.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.8
+    })),
+    ...projects.map((project) => ({
+      url: `${base}/work/${project.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.8
     })),

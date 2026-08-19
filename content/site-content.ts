@@ -1,4 +1,4 @@
-import type { BlogPost, CaseStudy, Service } from "@/types/content";
+import type { BlogPost, CaseStudy, PortfolioProject, Service } from "@/types/content";
 
 export const siteStats = [
   { label: "Brands scaled", value: "50+" },
@@ -142,6 +142,70 @@ export const caseStudies: CaseStudy[] = [
     metric: "Revenue per click up 31%",
     quote: "We scaled confidently because the numbers made sense.",
     author: "Priya N. — Founder"
+  }
+];
+
+/**
+ * Placeholder entries (isPlaceholder: true) hold the page layout for each
+ * industry we serve. Replace with real client videos, photos, and results
+ * as they're provided, then drop the isPlaceholder flag.
+ */
+export const portfolioProjects: PortfolioProject[] = [
+  {
+    slug: "restaurants-cafes",
+    category: "Restaurants & Cafes",
+    client: "Sample restaurant client",
+    title: "Content system for a growing restaurant brand",
+    summary: "Short-form video, food photography, and offer-led campaigns built for reservations and repeat visits.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "medical-clinics",
+    category: "Medical & Clinics",
+    client: "Sample clinic client",
+    title: "Trust-building content system for a medical clinic",
+    summary: "Educational content, patient trust signals, and appointment-focused campaigns for healthcare brands.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "beauty-salons",
+    category: "Beauty & Salons",
+    client: "Sample salon client",
+    title: "Booking-driven content for a beauty salon",
+    summary: "Aesthetic content direction, before/after storytelling, and offer campaigns built for bookings.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "automotive",
+    category: "Automotive",
+    client: "Sample automotive client",
+    title: "Showroom-grade content for an automotive brand",
+    summary: "Cinematic video, premium visuals, and test-drive funnel campaigns for automotive brands.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
   }
 ];
 

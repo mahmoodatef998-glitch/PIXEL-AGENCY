@@ -1,4 +1,15 @@
-import { agencyComparison, blogPosts, caseStudies, faqItems, pricingPlans, services, siteStats, testimonials, tools } from "@/content/site-content";
+import {
+  agencyComparison,
+  blogPosts,
+  caseStudies,
+  faqItems,
+  portfolioProjects,
+  pricingPlans,
+  services,
+  siteStats,
+  testimonials,
+  tools
+} from "@/content/site-content";
 import { isCmsEnabled } from "@/cms/sanity";
 
 /**
@@ -22,6 +33,18 @@ export async function getCaseStudies() {
     // TODO: Fetch from Sanity
   }
   return caseStudies;
+}
+
+export async function getPortfolioProjects() {
+  if (isCmsEnabled) {
+    // TODO: Fetch from Sanity
+  }
+  return portfolioProjects;
+}
+
+export async function getPortfolioProjectBySlug(slug: string) {
+  const all = await getPortfolioProjects();
+  return all.find((project) => project.slug === slug);
 }
 
 export async function getBlogPosts() {
