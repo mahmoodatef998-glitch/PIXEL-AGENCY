@@ -9,9 +9,9 @@ import { trackEvent } from "@/lib/analytics";
 
 const links = [
   { href: "/#services", label: "Services" },
+  { href: "/work", label: "Our Work" },
   { href: "/#how-we-work", label: "How We Work" },
   { href: "/#packages", label: "Packages" },
-  { href: "/#case-studies", label: "Case Studies" },
   { href: "/#contact", label: "Contact" }
 ];
 

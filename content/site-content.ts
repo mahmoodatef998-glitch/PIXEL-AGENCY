@@ -1,4 +1,4 @@
-import type { BlogPost, CaseStudy, Service } from "@/types/content";
+import type { BlogPost, CaseStudy, PortfolioProject, Service } from "@/types/content";
 
 export const siteStats = [
   { label: "Brands scaled", value: "50+" },
@@ -145,6 +145,70 @@ export const caseStudies: CaseStudy[] = [
   }
 ];
 
+/**
+ * Placeholder entries (isPlaceholder: true) hold the page layout for each
+ * industry we serve. Replace with real client videos, photos, and results
+ * as they're provided, then drop the isPlaceholder flag.
+ */
+export const portfolioProjects: PortfolioProject[] = [
+  {
+    slug: "restaurants-cafes",
+    category: "Restaurants & Cafes",
+    client: "Sample restaurant client",
+    title: "Content system for a growing restaurant brand",
+    summary: "Short-form video, food photography, and offer-led campaigns built for reservations and repeat visits.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "medical-clinics",
+    category: "Medical & Clinics",
+    client: "Sample clinic client",
+    title: "Trust-building content system for a medical clinic",
+    summary: "Educational content, patient trust signals, and appointment-focused campaigns for healthcare brands.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "beauty-salons",
+    category: "Beauty & Salons",
+    client: "Sample salon client",
+    title: "Booking-driven content for a beauty salon",
+    summary: "Aesthetic content direction, before/after storytelling, and offer campaigns built for bookings.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  },
+  {
+    slug: "automotive",
+    category: "Automotive",
+    client: "Sample automotive client",
+    title: "Showroom-grade content for an automotive brand",
+    summary: "Cinematic video, premium visuals, and test-drive funnel campaigns for automotive brands.",
+    challenge: "Placeholder — will describe the real challenge once project details are shared.",
+    solution: "Placeholder — will describe the campaign approach once project details are shared.",
+    results: ["Results pending real project data"],
+    coverImage:
+      "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1280&q=72",
+    gallery: [],
+    isPlaceholder: true
+  }
+];
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "why-most-agencies-fail-at-roi",
@@ -233,22 +297,94 @@ export const faqItems = [
 export const pricingPlans = [
   {
     name: "Starter",
-    price: "$500-800/mo",
-    subtitle: "For new businesses establishing digital presence",
-    features: ["2 social platforms", "8-12 posts/month", "Basic monthly report"]
+    price: "2,500 AED/mo",
+    subtitle: "For brands building a consistent content presence",
+    features: [
+      "6 professional videos / month",
+      "10 custom designs / month",
+      "Dedicated content moderator",
+      "Monthly content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer for accurate audience targeting",
+      "Professional in-house designer",
+      "Monthly performance report"
+    ]
   },
   {
-    name: "Professional",
-    price: "$1,200-1,800/mo",
+    name: "Growth",
+    price: "3,500 AED/mo",
     subtitle: "Most popular for scaling businesses",
-    features: ["3 platforms + paid ads", "Monthly photo session", "Reels + analytics reviews"],
+    features: [
+      "9 professional videos / month",
+      "12 custom designs / month",
+      "Dedicated content moderator",
+      "Advanced content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer with continuous audience targeting & optimization",
+      "Professional in-house designer",
+      "Bi-weekly performance reporting",
+      "Priority turnaround"
+    ],
     featured: true
   },
   {
-    name: "Full Stack",
-    price: "$3,000+/mo",
-    subtitle: "Marketing + infrastructure + technical support",
-    features: ["Everything in Professional", "Custom website/landing", "CRM setup + monthly support"]
+    name: "Premium",
+    price: "5,000 AED/mo",
+    subtitle: "For brands ready to dominate their market",
+    features: [
+      "12 professional videos / month",
+      "16 custom designs / month",
+      "Dedicated content moderator",
+      "Full content strategy & planning",
+      "Senior content creator team",
+      "Media buyer with advanced multi-platform targeting",
+      "Professional in-house designer",
+      "Weekly performance reporting + strategy calls",
+      "Priority support & fastest turnaround"
+    ]
   }
 ];
+
+export const agencyComparison = {
+  headline: "Why brands choose PixelPulse over a typical agency",
+  subtitle:
+    "Most agencies outsource your account to freelancers and charge extra for every role. Every PixelPulse package includes the full team, in-house, from day one.",
+  rows: [
+    {
+      label: "Dedicated content moderator",
+      us: true,
+      others: "Often missing or shared across clients"
+    },
+    {
+      label: "In-house content creator (scripts + production)",
+      us: true,
+      others: "Frequently outsourced to freelancers"
+    },
+    {
+      label: "Media buyer with precise audience targeting",
+      us: true,
+      others: "Usually a paid add-on"
+    },
+    {
+      label: "Professional in-house designer",
+      us: true,
+      others: "Design often billed per asset"
+    },
+    {
+      label: "Fixed, transparent AED pricing",
+      us: true,
+      others: "Vague ranges + hidden fees"
+    },
+    {
+      label: "Monthly content calendar & strategy",
+      us: true,
+      others: "Ad-hoc, reactive posting"
+    },
+    {
+      label: "Regular performance reporting",
+      us: true,
+      others: "Delayed or unclear reporting"
+    }
+  ]
+};
 

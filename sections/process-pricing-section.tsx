@@ -1,12 +1,20 @@
-import { Check } from "lucide-react";
+import { Check, Minus } from "lucide-react";
 import Link from "next/link";
 import { Reveal } from "@/animations/reveal";
 import { Button } from "@/components/ui/button";
 
+type AgencyComparison = {
+  headline: string;
+  subtitle: string;
+  rows: { label: string; us: boolean; others: string }[];
+};
+
 export function ProcessAndPricing({
-  pricingPlans
+  pricingPlans,
+  agencyComparison
 }: {
   pricingPlans: { name: string; price: string; subtitle: string; features: string[]; featured?: boolean }[];
+  agencyComparison?: AgencyComparison;
 }) {
   return (
     <>
@@ -90,7 +98,7 @@ export function ProcessAndPricing({
                 <div className="relative mt-7 grid gap-3">
                   <Link href={`/#contact`} className="block">
                     <Button className="w-full" variant={plan.featured ? "primary" : "secondary"}>
-                      {plan.featured ? "Choose Professional" : `Choose ${plan.name}`}
+                      Choose {plan.name}
                     </Button>
                   </Link>
                   <p className="text-center text-xs text-muted">
@@ -104,6 +112,44 @@ export function ProcessAndPricing({
             </Reveal>
           ))}
         </div>
+
+        {agencyComparison && (
+          <Reveal delay={0.1}>
+            <div className="mt-16 rounded-2xl border border-border bg-surface/50 p-6 md:p-8 overflow-hidden">
+              <h3 className="font-display text-xl md:text-2xl font-bold text-text">{agencyComparison.headline}</h3>
+              <p className="mt-2 max-w-2xl text-sm text-muted">{agencyComparison.subtitle}</p>
+
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full min-w-[560px] border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b border-border text-left text-xs uppercase tracking-[0.1em] text-muted">
+                      <th className="py-3 pr-4 font-semibold">What you get</th>
+                      <th className="py-3 px-4 font-semibold text-accent">PixelPulse</th>
+                      <th className="py-3 pl-4 font-semibold">Typical agencies</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {agencyComparison.rows.map((row) => (
+                      <tr key={row.label} className="border-b border-border/60 last:border-0">
+                        <td className="py-3.5 pr-4 text-text">{row.label}</td>
+                        <td className="py-3.5 px-4">
+                          {row.us ? (
+                            <span className="inline-flex items-center gap-1.5 font-semibold text-success">
+                              <Check className="size-4" /> Included
+                            </span>
+                          ) : (
+                            <Minus className="size-4 text-muted" />
+                          )}
+                        </td>
+                        <td className="py-3.5 pl-4 text-muted">{row.others}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Reveal>
+        )}
       </section>
     </>
   );
