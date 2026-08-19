@@ -296,6 +296,21 @@ export const faqItems = [
 
 export const pricingPlans = [
   {
+    name: "Basic",
+    price: "1,500 AED/mo",
+    subtitle: "For new brands starting a consistent content presence",
+    features: [
+      "3 professional videos / month",
+      "6 custom designs / month",
+      "Dedicated content moderator",
+      "Monthly content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer for accurate audience targeting",
+      "Professional in-house designer",
+      "Monthly performance report"
+    ]
+  },
+  {
     name: "Starter",
     price: "2,500 AED/mo",
     subtitle: "For brands building a consistent content presence",
