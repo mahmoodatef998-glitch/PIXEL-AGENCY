@@ -36,7 +36,7 @@ export default async function HomePage() {
       <main>
         <HeroSection tools={data.tools} />
         <ServicesSection services={data.services} />
-        <ProcessAndPricing pricingPlans={data.pricingPlans} />
+        <ProcessAndPricing pricingPlans={data.pricingPlans} agencyComparison={data.agencyComparison} />
         <CaseAndTestimonials caseStudies={data.caseStudies} testimonials={data.testimonials} />
         <FaqAndBlogSection faqs={data.faqItems} posts={posts} />
         <ContactSection />

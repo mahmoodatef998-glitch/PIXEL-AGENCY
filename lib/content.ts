@@ -1,4 +1,4 @@
-import { blogPosts, caseStudies, faqItems, pricingPlans, services, siteStats, testimonials, tools } from "@/content/site-content";
+import { agencyComparison, blogPosts, caseStudies, faqItems, pricingPlans, services, siteStats, testimonials, tools } from "@/content/site-content";
 import { isCmsEnabled } from "@/cms/sanity";
 
 /**
@@ -44,7 +44,8 @@ export async function getHomepageContent() {
     caseStudies: await getCaseStudies(),
     testimonials,
     faqItems,
-    pricingPlans
+    pricingPlans,
+    agencyComparison
   };
 }
 

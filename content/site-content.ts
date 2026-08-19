@@ -233,22 +233,94 @@ export const faqItems = [
 export const pricingPlans = [
   {
     name: "Starter",
-    price: "$500-800/mo",
-    subtitle: "For new businesses establishing digital presence",
-    features: ["2 social platforms", "8-12 posts/month", "Basic monthly report"]
+    price: "2,500 AED/mo",
+    subtitle: "For brands building a consistent content presence",
+    features: [
+      "6 professional videos / month",
+      "10 custom designs / month",
+      "Dedicated content moderator",
+      "Monthly content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer for accurate audience targeting",
+      "Professional in-house designer",
+      "Monthly performance report"
+    ]
   },
   {
-    name: "Professional",
-    price: "$1,200-1,800/mo",
+    name: "Growth",
+    price: "3,500 AED/mo",
     subtitle: "Most popular for scaling businesses",
-    features: ["3 platforms + paid ads", "Monthly photo session", "Reels + analytics reviews"],
+    features: [
+      "9 professional videos / month",
+      "12 custom designs / month",
+      "Dedicated content moderator",
+      "Advanced content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer with continuous audience targeting & optimization",
+      "Professional in-house designer",
+      "Bi-weekly performance reporting",
+      "Priority turnaround"
+    ],
     featured: true
   },
   {
-    name: "Full Stack",
-    price: "$3,000+/mo",
-    subtitle: "Marketing + infrastructure + technical support",
-    features: ["Everything in Professional", "Custom website/landing", "CRM setup + monthly support"]
+    name: "Premium",
+    price: "5,000 AED/mo",
+    subtitle: "For brands ready to dominate their market",
+    features: [
+      "12 professional videos / month",
+      "16 custom designs / month",
+      "Dedicated content moderator",
+      "Full content strategy & planning",
+      "Senior content creator team",
+      "Media buyer with advanced multi-platform targeting",
+      "Professional in-house designer",
+      "Weekly performance reporting + strategy calls",
+      "Priority support & fastest turnaround"
+    ]
   }
 ];
+
+export const agencyComparison = {
+  headline: "Why brands choose PixelPulse over a typical agency",
+  subtitle:
+    "Most agencies outsource your account to freelancers and charge extra for every role. Every PixelPulse package includes the full team, in-house, from day one.",
+  rows: [
+    {
+      label: "Dedicated content moderator",
+      us: true,
+      others: "Often missing or shared across clients"
+    },
+    {
+      label: "In-house content creator (scripts + production)",
+      us: true,
+      others: "Frequently outsourced to freelancers"
+    },
+    {
+      label: "Media buyer with precise audience targeting",
+      us: true,
+      others: "Usually a paid add-on"
+    },
+    {
+      label: "Professional in-house designer",
+      us: true,
+      others: "Design often billed per asset"
+    },
+    {
+      label: "Fixed, transparent AED pricing",
+      us: true,
+      others: "Vague ranges + hidden fees"
+    },
+    {
+      label: "Monthly content calendar & strategy",
+      us: true,
+      others: "Ad-hoc, reactive posting"
+    },
+    {
+      label: "Regular performance reporting",
+      us: true,
+      others: "Delayed or unclear reporting"
+    }
+  ]
+};
 
