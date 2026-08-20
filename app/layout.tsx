@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
@@ -9,9 +9,9 @@ import { ContactNudge } from "@/components/contact-nudge";
 import { ThemeProvider } from "@/components/theme-provider";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
-const fontDisplay = Syne({
+const fontDisplay = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display"
 });
 
