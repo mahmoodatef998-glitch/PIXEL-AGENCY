@@ -8,6 +8,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { trackEvent } from "@/lib/analytics";
 
 const links = [
+  { href: "/#build", label: "Web & CRM" },
   { href: "/#services", label: "Services" },
   { href: "/work", label: "Our Work" },
   { href: "/#how-we-work", label: "How We Work" },
