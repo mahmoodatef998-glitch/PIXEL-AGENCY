@@ -2,11 +2,12 @@
 
 import { MessageCircle } from "lucide-react";
 import { TrackedLink } from "@/components/tracked-link";
+import { waLink } from "@/lib/site-config";
 
 export function FloatingCTA() {
   return (
     <TrackedLink
-      href="https://wa.me/971545535031?text=Hi%20PixelPulse%2C%20I%20need%20a%20strategy%20call."
+      href={waLink("Hi PixelPulse, I need a strategy call.")}
       target="_blank"
       rel="noopener noreferrer"
       event="whatsapp_click"

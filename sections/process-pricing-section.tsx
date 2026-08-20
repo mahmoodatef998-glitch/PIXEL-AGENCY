@@ -55,7 +55,7 @@ export function ProcessAndPricing({
             Pick a package to get started. Every plan includes strategy, reporting, and a clear next-step roadmap.
           </p>
         </Reveal>
-        <div className="mt-10 grid gap-5 md:grid-cols-3 items-stretch">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4 items-stretch">
           {pricingPlans.map((plan, i) => (
             <Reveal key={plan.name} delay={i * 0.05}>
               <article

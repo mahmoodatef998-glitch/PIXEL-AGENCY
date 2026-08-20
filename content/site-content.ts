@@ -40,30 +40,32 @@ export const services: Service[] = [
   {
     slug: "website-development",
     title: "Website Development",
-    short: "Custom high-converting websites, not templates.",
+    short: "Custom high-converting websites, not templates — at prices built for growing businesses.",
     description:
-      "Fast, mobile-first websites and landing pages designed for Dubai brands, focused on conversion pathways and SEO architecture.",
+      "Fast, mobile-first websites and landing pages designed for Dubai brands, focused on conversion pathways and SEO architecture. Professional, custom-built work at some of the most competitive rates in the market.",
     painPoints: ["Slow website", "Low conversion rate", "Poor UX on mobile", "SEO structure issues"],
     process: ["Discovery + wireframes", "UI system + copy structure", "Build + performance QA", "Launch + analytics handoff"],
     faq: [
       { q: "Do you use templates?", a: "No. Every project is custom-built around your funnel and positioning." },
-      { q: "Can you integrate CRM and forms?", a: "Yes, we connect forms, events, and pipelines end to end." }
+      { q: "Can you integrate CRM and forms?", a: "Yes, we connect forms, events, and pipelines end to end." },
+      { q: "Is pricing flexible?", a: "Yes. We scope every website around your budget and goals — ask us for a quote tailored to your project." }
     ],
-    cta: "Start your website project"
+    cta: "Get a website quote"
   },
   {
     slug: "crm-development",
     title: "CRM Development",
-    short: "Custom CRM workflows that stop lead leakage.",
+    short: "Custom CRM systems that stop lead leakage — professional builds at very competitive pricing.",
     description:
-      "We build CRM systems around your real sales process: lead capture, routing, follow-ups, dashboards, and attribution.",
+      "We build CRM systems around your real sales process: lead capture, routing, follow-ups, dashboards, and attribution. Enterprise-grade capability, priced for SMBs.",
     painPoints: ["Lead leakage", "Manual follow-up", "No pipeline visibility", "Messy reporting"],
     process: ["Sales process mapping", "Pipeline + automation build", "Integrations", "Team onboarding + optimization"],
     faq: [
       { q: "Can you integrate WhatsApp and email?", a: "Yes, depending on your stack and compliance requirements." },
-      { q: "Will my team need technical skills?", a: "No. We design it for operators, not engineers." }
+      { q: "Will my team need technical skills?", a: "No. We design it for operators, not engineers." },
+      { q: "Is pricing flexible?", a: "Yes. We scope every CRM build around your budget and goals — ask us for a quote tailored to your project." }
     ],
-    cta: "Design my custom CRM"
+    cta: "Get a CRM quote"
   },
   {
     slug: "erp-development",
@@ -295,6 +297,21 @@ export const faqItems = [
 ];
 
 export const pricingPlans = [
+  {
+    name: "Basic",
+    price: "1,500 AED/mo",
+    subtitle: "For new brands starting a consistent content presence",
+    features: [
+      "3 professional videos / month",
+      "6 custom designs / month",
+      "Dedicated content moderator",
+      "Monthly content calendar & strategy",
+      "Content creator for scripts & production",
+      "Media buyer for accurate audience targeting",
+      "Professional in-house designer",
+      "Monthly performance report"
+    ]
+  },
   {
     name: "Starter",
     price: "2,500 AED/mo",
