@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "PixelPulse is the leading creative growth agency in Dubai. We provide social media management, performance marketing, and custom web systems for UAE brands.",
   email: "hello@pixelpulse.agency",
-  whatsapp: "+971545535031",
+  whatsapp: "+971523367694",
   locale: "en_AE",
   social: {
     instagram: "https://www.instagram.com/pixelpulse.agency",
@@ -15,4 +15,9 @@ export const siteConfig = {
 
 export function absoluteUrl(path = "") {
   return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function waLink(message: string) {
+  const digits = siteConfig.whatsapp.replace(/\D/g, "");
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CheckCircle2, ArrowLeft, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThankYouTracker } from "@/components/thank-you-tracker";
+import { waLink } from "@/lib/site-config";
 
 export const metadata = {
   title: "Thank you"
@@ -31,7 +32,7 @@ export default function ThankYouPage() {
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <a
-              href="https://wa.me/971545535031?text=Hi%20PixelPulse%2C%20I%20just%20submitted%20the%20form%20and%20would%20like%20to%20talk."
+              href={waLink("Hi PixelPulse, I just submitted the form and would like to talk.")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"

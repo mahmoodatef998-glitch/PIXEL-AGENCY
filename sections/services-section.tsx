@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
   Bot,
   Brush,
+  Database,
   Megaphone,
   PenTool,
   Share2,
@@ -17,7 +18,22 @@ const premiumServices: {
   description: string;
   slug?: string;
   icon: LucideIcon;
+  badge?: string;
 }[] = [
+  {
+    title: "Web Design & Development",
+    description: "Custom, high-converting websites — professionally built at some of the most competitive prices in the market.",
+    slug: "website-development",
+    icon: PenTool,
+    badge: "Best value"
+  },
+  {
+    title: "CRM Development",
+    description: "Enterprise-grade custom CRM systems that stop lead leakage — professional builds, very competitive pricing.",
+    slug: "crm-development",
+    icon: Database,
+    badge: "Best value"
+  },
   {
     title: "Social Media Marketing",
     description: "Platform-native content systems designed to turn attention into consistent lead flow.",
@@ -29,12 +45,6 @@ const premiumServices: {
     description: "Premium brand positioning, messaging, and identity systems that elevate perceived value.",
     slug: "branding",
     icon: Sparkles
-  },
-  {
-    title: "Web Design",
-    description: "High-converting digital experiences with cinematic visuals and conversion-first architecture.",
-    slug: "website-development",
-    icon: PenTool
   },
   {
     title: "Paid Advertising",
@@ -99,10 +109,20 @@ export function ServicesSection({ services }: { services: Service[] }) {
 
             return (
               <Reveal key={service.title} delay={i * 0.05}>
-                <article className="group relative h-full overflow-hidden rounded-[24px] border border-border bg-surface/40 p-[1px] shadow-sm dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)] will-change-transform transition-all duration-400 hover:-translate-y-1 hover:shadow-md dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                <article
+                  className={`group relative h-full overflow-hidden rounded-[24px] border p-[1px] shadow-sm dark:shadow-[0_14px_34px_rgba(0,0,0,0.24)] will-change-transform transition-all duration-400 hover:-translate-y-1 hover:shadow-md dark:hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] ${
+                    service.badge ? "border-accent/60" : "border-border"
+                  }`}
+                >
                   <div className="absolute inset-0 rounded-[24px] opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br from-accent/10 to-purple/10 dark:from-accent/30 dark:to-purple/20" />
                   <div className="relative h-full rounded-[23px] border border-border/40 bg-surface/95 p-7">
                     <span className="pointer-events-none absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+                    {service.badge && (
+                      <span className="absolute right-5 top-5 rounded-full bg-accent px-3 py-1 text-[11px] font-bold uppercase tracking-[0.06em] text-black">
+                        {service.badge}
+                      </span>
+                    )}
 
                     <div className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/15 bg-[linear-gradient(145deg,rgba(255,214,120,0.15),rgba(123,97,255,0.16))] text-[#F6DEAE] shadow-[0_0_24px_rgba(123,97,255,0.22)] transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2">
                       <Icon className="size-6" />

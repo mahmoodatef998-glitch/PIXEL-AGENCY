@@ -1,5 +1,6 @@
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/animations/reveal";
+import { waLink } from "@/lib/site-config";
 
 export function ContactSection() {
   return (
@@ -15,7 +16,7 @@ export function ContactSection() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="https://wa.me/971545535031?text=Hi%20PixelPulse%2C%20I%20want%20a%20free%20strategy%20call."
+              href={waLink("Hi PixelPulse, I want a free strategy call.")}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-accent hover:text-accent"
