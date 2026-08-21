@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import { getPortfolioProjectBySlug, getPortfolioProjects } from "@/lib/content";
 import { getVideoEmbedUrl } from "@/lib/utils";
 
@@ -54,8 +55,22 @@ export default async function WorkDetailPage({ params }: Props) {
             />
           </div>
         ) : (
-          <div className="relative aspect-video w-full">
-            <Image src={project.coverImage} alt={project.title} fill sizes="100vw" className="object-cover" />
+          <div className="relative aspect-video w-full bg-surface2">
+            {project.coverImage && (
+              <Image src={project.coverImage} alt={project.title} fill sizes="100vw" className="object-cover" />
+            )}
+            {project.videoUrl && (
+              <a
+                href={project.videoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center bg-black/40 transition hover:bg-black/55"
+              >
+                <span className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black">
+                  Watch video <ExternalLink className="size-4" />
+                </span>
+              </a>
+            )}
           </div>
         )}
       </div>

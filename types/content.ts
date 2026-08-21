@@ -20,18 +20,6 @@ export type BlogPost = {
   content: string[];
 };
 
-export type CaseStudy = {
-  slug: string;
-  industry: string;
-  title: string;
-  challenge: string;
-  solution: string;
-  result: string;
-  metric: string;
-  quote: string;
-  author: string;
-};
-
 export type PortfolioProject = {
   slug: string;
   category: string;
@@ -44,6 +32,7 @@ export type PortfolioProject = {
   coverImage: string;
   gallery: string[];
   videoUrl?: string;
+  featured?: boolean;
   /** True until the real client assets replace this sample entry. */
   isPlaceholder?: boolean;
 };
