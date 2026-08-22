@@ -35,3 +35,15 @@ export function getVideoEmbedUrl(url: string): string | null {
   }
 }
 
+/** Platforms rendered via a native widget instead of a plain iframe embed. */
+export function getVideoWidgetPlatform(url: string): "instagram" | "facebook" | null {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    if (host === "instagram.com") return "instagram";
+    if (host === "facebook.com" || host === "fb.watch" || host === "m.facebook.com") return "facebook";
+    return null;
+  } catch {
+    return null;
+  }
+}
+
