@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { getPortfolioProjectBySlug, getPortfolioProjects } from "@/lib/content";
-import { getVideoEmbedUrl } from "@/lib/utils";
+import { getVideoEmbedUrl, getVideoWidgetPlatform } from "@/lib/utils";
+import { FacebookEmbed, InstagramEmbed } from "@/components/social-embed";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -30,6 +31,7 @@ export default async function WorkDetailPage({ params }: Props) {
   if (!project) notFound();
 
   const embedUrl = project.videoUrl ? getVideoEmbedUrl(project.videoUrl) : null;
+  const widgetPlatform = project.videoUrl ? getVideoWidgetPlatform(project.videoUrl) : null;
 
   return (
     <main className="container py-20">
@@ -54,6 +56,10 @@ export default async function WorkDetailPage({ params }: Props) {
               allowFullScreen
             />
           </div>
+        ) : widgetPlatform === "instagram" && project.videoUrl ? (
+          <InstagramEmbed url={project.videoUrl} />
+        ) : widgetPlatform === "facebook" && project.videoUrl ? (
+          <FacebookEmbed url={project.videoUrl} />
         ) : (
           <div className="relative aspect-video w-full bg-surface2">
             {project.coverImage && (
