@@ -17,7 +17,8 @@ export default function AdminLoginPage() {
     setError(null);
 
     const supabase = createClient();
-    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    const normalizedEmail = email.includes("@") ? email : `${email}@pixelpulse.local`;
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
 
     if (signInError) {
       setError("Wrong username or password.");
