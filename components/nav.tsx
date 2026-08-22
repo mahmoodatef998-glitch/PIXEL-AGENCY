@@ -13,8 +13,7 @@ const links = [
   { href: "/work", label: "Our Work" },
   { href: "/#how-we-work", label: "How We Work" },
   { href: "/#packages", label: "Packages" },
-  { href: "/#contact", label: "Contact" },
-  { href: "/admin/login", label: "Admin" }
+  { href: "/#contact", label: "Contact" }
 ];
 
 export function Nav() {
