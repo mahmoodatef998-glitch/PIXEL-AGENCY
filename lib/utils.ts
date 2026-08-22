@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/** Converts a YouTube/Vimeo watch URL into an embeddable iframe URL. */
+/** Converts a YouTube/Vimeo/TikTok watch URL into an embeddable iframe URL. */
 export function getVideoEmbedUrl(url: string): string | null {
   try {
     const parsed = new URL(url);
@@ -24,6 +24,10 @@ export function getVideoEmbedUrl(url: string): string | null {
     if (host === "vimeo.com") {
       const id = parsed.pathname.split("/").filter(Boolean)[0];
       if (id) return `https://player.vimeo.com/video/${id}`;
+    }
+    if (host === "tiktok.com") {
+      const match = parsed.pathname.match(/\/video\/(\d+)/);
+      if (match) return `https://www.tiktok.com/embed/v2/${match[1]}`;
     }
     return null;
   } catch {
