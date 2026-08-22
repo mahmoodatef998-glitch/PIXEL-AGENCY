@@ -21,7 +21,7 @@ export default function AdminLoginPage() {
     const { error: signInError } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
 
     if (signInError) {
-      setError("Wrong username or password.");
+      setError(`${signInError.message} (${signInError.status ?? "no status"})`);
       setLoading(false);
       return;
     }
