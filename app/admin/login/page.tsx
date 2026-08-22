@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
     const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
 
     if (signInError) {
-      setError("Wrong email or password.");
+      setError("Wrong username or password.");
       setLoading(false);
       return;
     }
@@ -39,11 +39,12 @@ export default function AdminLoginPage() {
         <div className="mt-6 space-y-4">
           <div>
             <label className="text-xs uppercase tracking-[0.1em] text-muted" htmlFor="email">
-              Email
+              Username
             </label>
             <input
               id="email"
-              type="email"
+              type="text"
+              autoComplete="username"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
