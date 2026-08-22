@@ -38,8 +38,11 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="container mt-8 md:mt-10 border-t border-border pt-5 text-xs text-muted">
-        &copy; {new Date().getFullYear()} PixelPulse Agency. All rights reserved.
+      <div className="container mt-8 md:mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-5 text-xs text-muted">
+        <p>&copy; {new Date().getFullYear()} PixelPulse Agency. All rights reserved.</p>
+        <Link href="/admin/login" className="hover:text-accent">
+          Admin
+        </Link>
       </div>
     </footer>
   );
