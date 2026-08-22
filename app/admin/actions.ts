@@ -1,0 +1,99 @@
+"use server";
+
+import { revalidatePath } from "next/cache";
+import { createClient } from "@/lib/supabase/server";
+
+function slugify(input: string) {
+  return input
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function linesToArray(value: string) {
+  return value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+export async function signOut() {
+  const supabase = await createClient();
+  await supabase.auth.signOut();
+  revalidatePath("/admin", "layout");
+}
+
+export async function createProject(formData: FormData) {
+  const supabase = await createClient();
+
+  const title = String(formData.get("title") ?? "").trim();
+  const slugInput = String(formData.get("slug") ?? "").trim();
+
+  const { error } = await supabase.from("portfolio_projects").insert({
+    title,
+    slug: slugInput ? slugify(slugInput) : slugify(title),
+    category: String(formData.get("category") ?? "").trim(),
+    client: String(formData.get("client") ?? "").trim(),
+    summary: String(formData.get("summary") ?? "").trim(),
+    challenge: String(formData.get("challenge") ?? "").trim(),
+    solution: String(formData.get("solution") ?? "").trim(),
+    results: linesToArray(String(formData.get("results") ?? "")),
+    cover_image: String(formData.get("cover_image") ?? "").trim() || null,
+    gallery: linesToArray(String(formData.get("gallery") ?? "")),
+    video_url: String(formData.get("video_url") ?? "").trim() || null,
+    featured: formData.get("featured") === "on",
+    published: formData.get("published") === "on"
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/work");
+  revalidatePath("/");
+  return { error: null };
+}
+
+export async function updateProject(id: string, formData: FormData) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("portfolio_projects")
+    .update({
+      title: String(formData.get("title") ?? "").trim(),
+      slug: slugify(String(formData.get("slug") ?? "")),
+      category: String(formData.get("category") ?? "").trim(),
+      client: String(formData.get("client") ?? "").trim(),
+      summary: String(formData.get("summary") ?? "").trim(),
+      challenge: String(formData.get("challenge") ?? "").trim(),
+      solution: String(formData.get("solution") ?? "").trim(),
+      results: linesToArray(String(formData.get("results") ?? "")),
+      cover_image: String(formData.get("cover_image") ?? "").trim() || null,
+      gallery: linesToArray(String(formData.get("gallery") ?? "")),
+      video_url: String(formData.get("video_url") ?? "").trim() || null,
+      featured: formData.get("featured") === "on",
+      published: formData.get("published") === "on",
+      updated_at: new Date().toISOString()
+    })
+    .eq("id", id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/work");
+  revalidatePath("/");
+  return { error: null };
+}
+
+export async function deleteProject(id: string) {
+  const supabase = await createClient();
+  await supabase.from("portfolio_projects").delete().eq("id", id);
+
+  revalidatePath("/admin");
+  revalidatePath("/work");
+  revalidatePath("/");
+}

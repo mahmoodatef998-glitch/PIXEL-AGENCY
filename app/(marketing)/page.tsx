@@ -39,7 +39,7 @@ export default async function HomePage() {
         <FeaturedBuildSection />
         <ServicesSection services={data.services} />
         <ProcessAndPricing pricingPlans={data.pricingPlans} agencyComparison={data.agencyComparison} />
-        <CaseAndTestimonials caseStudies={data.caseStudies} testimonials={data.testimonials} />
+        <CaseAndTestimonials portfolioProjects={data.portfolioProjects} testimonials={data.testimonials} />
         <FaqAndBlogSection faqs={data.faqItems} posts={posts} />
         <ContactSection />
       </main>

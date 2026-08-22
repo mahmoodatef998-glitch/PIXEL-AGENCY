@@ -28,14 +28,16 @@ export default async function WorkPage() {
             href={`/work/${project.slug}`}
             className="group overflow-hidden rounded-2xl border border-border bg-surface transition hover:border-accent"
           >
-            <div className="relative h-56 w-full overflow-hidden">
-              <Image
-                src={project.coverImage}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+            <div className="relative h-56 w-full overflow-hidden bg-surface2">
+              {project.coverImage && (
+                <Image
+                  src={project.coverImage}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              )}
               {project.isPlaceholder && (
                 <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
                   Sample slot — real project coming soon

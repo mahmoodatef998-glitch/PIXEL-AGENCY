@@ -1,4 +1,4 @@
-import type { BlogPost, CaseStudy, PortfolioProject, Service } from "@/types/content";
+import type { BlogPost, PortfolioProject, Service } from "@/types/content";
 
 export const siteStats = [
   { label: "Brands scaled", value: "50+" },
@@ -108,42 +108,6 @@ export const services: Service[] = [
       { q: "Can this work for local UAE businesses?", a: "Yes. We tailor channels and messaging specifically for Dubai and UAE market demand patterns." }
     ],
     cta: "Launch my lead engine"
-  }
-];
-
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: "restaurant-meta-growth",
-    industry: "Restaurant",
-    title: "3x more reservations in 60 days",
-    challenge: "Low weekday bookings and inconsistent creative output.",
-    solution: "Localized Meta campaigns + short-form content + CRM follow-up sequence.",
-    result: "3x reservations in 60 days",
-    metric: "Cost per booking reduced 38%",
-    quote: "Finally, ad spend turned into booked tables.",
-    author: "Marco V. — Owner"
-  },
-  {
-    slug: "real-estate-crm",
-    industry: "Real Estate",
-    title: "Lead response time reduced by 80%",
-    challenge: "Leads were spread across channels with no fast assignment workflow.",
-    solution: "Custom CRM with auto-routing, reminders, and pipeline dashboards.",
-    result: "80% faster first response",
-    metric: "Qualified appointments up 42%",
-    quote: "We stopped losing hot leads to faster competitors.",
-    author: "Dana E. — Managing Broker"
-  },
-  {
-    slug: "retail-google-shopping",
-    industry: "Retail eCommerce",
-    title: "450% ROAS from Shopping campaigns",
-    challenge: "Poor feed quality and unstable campaign profitability.",
-    solution: "Feed cleanup, segmentation, and weekly bid/creative test loops.",
-    result: "450% ROAS",
-    metric: "Revenue per click up 31%",
-    quote: "We scaled confidently because the numbers made sense.",
-    author: "Priya N. — Founder"
   }
 ];
 

@@ -1,7 +1,6 @@
 import {
   agencyComparison,
   blogPosts,
-  caseStudies,
   faqItems,
   portfolioProjects,
   pricingPlans,
@@ -11,6 +10,27 @@ import {
   tools
 } from "@/content/site-content";
 import { isCmsEnabled } from "@/cms/sanity";
+import { createPublicClient, isSupabaseConfigured } from "@/lib/supabase/public";
+import type { PortfolioProjectRow } from "@/lib/supabase/types";
+import type { PortfolioProject } from "@/types/content";
+
+function mapPortfolioRow(row: PortfolioProjectRow): PortfolioProject {
+  return {
+    slug: row.slug,
+    category: row.category,
+    client: row.client,
+    title: row.title,
+    summary: row.summary,
+    challenge: row.challenge,
+    solution: row.solution,
+    results: row.results,
+    coverImage: row.cover_image ?? "",
+    gallery: row.gallery,
+    videoUrl: row.video_url ?? undefined,
+    featured: row.featured,
+    isPlaceholder: false
+  };
+}
 
 /**
  * Content abstraction layer.
@@ -28,22 +48,39 @@ export async function getServiceBySlug(slug: string) {
   return all.find((service) => service.slug === slug);
 }
 
-export async function getCaseStudies() {
-  if (isCmsEnabled) {
-    // TODO: Fetch from Sanity
-  }
-  return caseStudies;
-}
+export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
+  if (isSupabaseConfigured) {
+    const supabase = createPublicClient();
+    const { data } = await supabase
+      .from("portfolio_projects")
+      .select("*")
+      .eq("published", true)
+      .order("featured", { ascending: false })
+      .order("created_at", { ascending: false })
+      .returns<PortfolioProjectRow[]>();
 
-export async function getPortfolioProjects() {
-  if (isCmsEnabled) {
-    // TODO: Fetch from Sanity
+    if (data && data.length > 0) {
+      return data.map(mapPortfolioRow);
+    }
   }
+
   return portfolioProjects;
 }
 
 export async function getPortfolioProjectBySlug(slug: string) {
-  const all = await getPortfolioProjects();
+  if (isSupabaseConfigured) {
+    const supabase = createPublicClient();
+    const { data } = await supabase
+      .from("portfolio_projects")
+      .select("*")
+      .eq("slug", slug)
+      .eq("published", true)
+      .maybeSingle<PortfolioProjectRow>();
+
+    if (data) return mapPortfolioRow(data);
+  }
+
+  const all = portfolioProjects;
   return all.find((project) => project.slug === slug);
 }
 
@@ -64,7 +101,7 @@ export async function getHomepageContent() {
     siteStats,
     tools,
     services: await getServices(),
-    caseStudies: await getCaseStudies(),
+    portfolioProjects: await getPortfolioProjects(),
     testimonials,
     faqItems,
     pricingPlans,
