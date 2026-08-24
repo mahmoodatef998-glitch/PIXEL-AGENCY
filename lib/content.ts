@@ -10,7 +10,7 @@ import {
 } from "@/content/site-content";
 import { isCmsEnabled } from "@/cms/sanity";
 import { createPublicClient, isSupabaseConfigured } from "@/lib/supabase/public";
-import type { PortfolioProjectRow } from "@/lib/supabase/types";
+import type { PortfolioProjectRow, SiteSettingsRow } from "@/lib/supabase/types";
 import type { PortfolioProject } from "@/types/content";
 
 function mapPortfolioRow(row: PortfolioProjectRow): PortfolioProject {
@@ -93,6 +93,21 @@ export async function getBlogPosts() {
 export async function getBlogPostBySlug(slug: string) {
   const posts = await getBlogPosts();
   return posts.find((post) => post.slug === slug);
+}
+
+export async function getSiteSettings(): Promise<{ logoUrl: string | null }> {
+  if (isSupabaseConfigured) {
+    const supabase = createPublicClient();
+    const { data } = await supabase
+      .from("site_settings")
+      .select("*")
+      .eq("id", 1)
+      .maybeSingle<SiteSettingsRow>();
+
+    if (data) return { logoUrl: data.logo_url };
+  }
+
+  return { logoUrl: null };
 }
 
 export async function getHomepageContent() {
