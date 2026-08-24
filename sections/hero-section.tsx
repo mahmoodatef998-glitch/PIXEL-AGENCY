@@ -12,7 +12,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
 
   return (
     <>
-      <section id="top" className="relative isolate min-h-[85vh] md:min-h-screen overflow-hidden">
+      <section id="top" className="relative isolate min-h-[62vh] md:min-h-screen overflow-hidden">
         {/* Cinematic video background */}
         <div className="pointer-events-none absolute inset-0 z-0">
           <video
@@ -77,7 +77,7 @@ export function HeroSection({ tools }: { tools: string[] }) {
           transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="container relative z-10 min-h-[85vh] md:min-h-screen py-14 md:py-24 flex flex-col justify-center md:justify-end">
+        <div className="container relative z-10 min-h-[62vh] md:min-h-screen py-8 md:py-24 flex flex-col justify-center md:justify-end">
           <div className="max-w-3xl text-left">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
@@ -85,17 +85,20 @@ export function HeroSection({ tools }: { tools: string[] }) {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/50 px-4 py-2 text-xs text-muted backdrop-blur-md"
             >
-              <span className="text-accent font-semibold">Creative Growth Studio</span> Cinematic strategy. Measurable performance.
+              <span className="text-accent font-semibold">Creative Growth Studio</span>
+              <span className="hidden sm:inline">Cinematic strategy. Measurable performance.</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 max-w-[13ch] font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold tracking-tight leading-[0.95] text-text"
+              className="mt-6 max-w-full md:max-w-[13ch] font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold tracking-tight leading-[0.95] text-text"
             >
               Brands built to{" "}
-              <span className="bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">be seen</span>
+              <span className="whitespace-nowrap bg-gradient-to-r from-accent to-purple bg-clip-text text-transparent">
+                be seen
+              </span>
             </motion.h1>
 
             <motion.p
