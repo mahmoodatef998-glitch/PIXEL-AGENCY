@@ -26,7 +26,7 @@ function mapPortfolioRow(row: PortfolioProjectRow): PortfolioProject {
     results: row.results,
     coverImage: row.cover_image ?? "",
     gallery: row.gallery,
-    videoUrl: row.video_url ?? undefined,
+    videoUrls: row.video_urls,
     featured: row.featured,
     isPlaceholder: false
   };

@@ -62,9 +62,10 @@ export function ProjectForm({ project, onDone }: { project?: PortfolioProjectRow
 
       <div className="grid gap-4 sm:grid-cols-2">
         <Field
-          label="Video link (YouTube, Vimeo, Instagram, or Facebook post URL)"
-          name="video_url"
-          defaultValue={project?.video_url ?? ""}
+          label="Video links (one per line — YouTube, Vimeo, TikTok, Instagram, or Facebook post URLs)"
+          name="video_urls"
+          defaultValue={project?.video_urls?.join("\n")}
+          textarea
         />
         <CoverImageField defaultValue={project?.cover_image ?? ""} />
       </div>

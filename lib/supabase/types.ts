@@ -10,7 +10,7 @@ export type PortfolioProjectRow = {
   results: string[];
   cover_image: string | null;
   gallery: string[];
-  video_url: string | null;
+  video_urls: string[];
   featured: boolean;
   published: boolean;
   created_at: string;
