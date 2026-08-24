@@ -5,19 +5,12 @@ import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function CaseAndTestimonials({
-  portfolioProjects,
-  testimonials
-}: {
-  portfolioProjects: PortfolioProject[];
-  testimonials: { name: string; company: string; quote: string; initials: string }[];
-}) {
+export function OurWorkSection({ portfolioProjects }: { portfolioProjects: PortfolioProject[] }) {
   const showcaseCards = portfolioProjects.slice(0, 4);
   const provenProjectsCount = portfolioProjects.filter((p) => !p.isPlaceholder).length;
 
   return (
-    <>
-      <section id="case-studies" className="relative overflow-hidden bg-surface py-20 md:py-24">
+    <section id="case-studies" className="relative overflow-hidden bg-surface py-20 md:py-24">
         <div
           aria-hidden
           className="pointer-events-none absolute -left-28 top-8 size-[24rem] rounded-full bg-[radial-gradient(circle,rgba(255,214,120,0.18)_0%,rgba(255,214,120,0)_72%)] blur-2xl"
@@ -116,35 +109,6 @@ export function CaseAndTestimonials({
           </div>
         </div>
       </section>
-
-      <section className="container py-20">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.14em] text-accent">Testimonials</p>
-          <h2 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight">
-            Founders who needed one accountable partner
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {testimonials.map((item, i) => (
-            <Reveal key={item.name} delay={i * 0.06}>
-              <article className="h-full rounded-2xl border border-border bg-surface2/80 p-6 will-change-transform shadow-lg">
-                <p className="text-amber-300">★★★★★</p>
-                <p className="mt-3 text-sm text-muted">{item.quote}</p>
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="inline-flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-accent to-purple text-xs font-bold text-black">
-                    {item.initials}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">{item.name}</p>
-                    <p className="text-xs text-muted">{item.company}</p>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-    </>
   );
 }
 

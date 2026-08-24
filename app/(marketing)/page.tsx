@@ -1,11 +1,11 @@
 import { getBlogPosts, getHomepageContent } from "@/lib/content";
 import { buildFaqSchema, jsonLdScript } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site-config";
-import { CaseAndTestimonials } from "@/sections/case-testimonial-section";
 import { ContactSection } from "@/sections/contact-section";
 import { FaqAndBlogSection } from "@/sections/faq-blog-section";
 import { FeaturedBuildSection } from "@/sections/featured-build-section";
 import { HeroSection } from "@/sections/hero-section";
+import { OurWorkSection } from "@/sections/our-work-section";
 import { PricingSection, ProcessSection } from "@/sections/process-pricing-section";
 import { ServicesSection } from "@/sections/services-section";
 
@@ -38,7 +38,7 @@ export default async function HomePage() {
         <HeroSection tools={data.tools} />
         <FeaturedBuildSection />
         <ServicesSection services={data.services} />
-        <CaseAndTestimonials portfolioProjects={data.portfolioProjects} testimonials={data.testimonials} />
+        <OurWorkSection portfolioProjects={data.portfolioProjects} />
         <ProcessSection />
         <PricingSection pricingPlans={data.pricingPlans} agencyComparison={data.agencyComparison} />
         <FaqAndBlogSection faqs={data.faqItems} posts={posts} />

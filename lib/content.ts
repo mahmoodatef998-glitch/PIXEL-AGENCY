@@ -6,7 +6,6 @@ import {
   pricingPlans,
   services,
   siteStats,
-  testimonials,
   tools
 } from "@/content/site-content";
 import { isCmsEnabled } from "@/cms/sanity";
@@ -102,7 +101,6 @@ export async function getHomepageContent() {
     tools,
     services: await getServices(),
     portfolioProjects: await getPortfolioProjects(),
-    testimonials,
     faqItems,
     pricingPlans,
     agencyComparison

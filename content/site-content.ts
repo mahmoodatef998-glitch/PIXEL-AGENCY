@@ -224,27 +224,6 @@ export const blogPosts: BlogPost[] = [
   }
 ];
 
-export const testimonials = [
-  {
-    name: "Jordan Lee",
-    company: "Apex Dental Group",
-    quote: "One roadmap, one accountable team, and finally clear revenue reporting.",
-    initials: "JL"
-  },
-  {
-    name: "Riley Ortiz",
-    company: "Harborline Realty",
-    quote: "Their CRM redesign alone paid for the engagement.",
-    initials: "RO"
-  },
-  {
-    name: "Samira Khalil",
-    company: "Copper Spoon Bistro",
-    quote: "We stopped guessing and started scaling what actually works.",
-    initials: "SK"
-  }
-];
-
 export const faqItems = [
   {
     q: "What makes PixelPulse different from typical agencies?",
