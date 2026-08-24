@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { fetchVideoThumbnail } from "@/lib/utils";
 
 function slugify(input: string) {
   return input
@@ -29,6 +30,12 @@ export async function createProject(formData: FormData) {
 
   const title = String(formData.get("title") ?? "").trim();
   const slugInput = String(formData.get("slug") ?? "").trim();
+  const videoUrl = String(formData.get("video_url") ?? "").trim() || null;
+  let coverImage = String(formData.get("cover_image") ?? "").trim() || null;
+
+  if (!coverImage && videoUrl) {
+    coverImage = await fetchVideoThumbnail(videoUrl);
+  }
 
   const { error } = await supabase.from("portfolio_projects").insert({
     title,
@@ -39,9 +46,9 @@ export async function createProject(formData: FormData) {
     challenge: String(formData.get("challenge") ?? "").trim(),
     solution: String(formData.get("solution") ?? "").trim(),
     results: linesToArray(String(formData.get("results") ?? "")),
-    cover_image: String(formData.get("cover_image") ?? "").trim() || null,
+    cover_image: coverImage,
     gallery: linesToArray(String(formData.get("gallery") ?? "")),
-    video_url: String(formData.get("video_url") ?? "").trim() || null,
+    video_url: videoUrl,
     featured: formData.get("featured") === "on",
     published: formData.get("published") === "on"
   });
@@ -59,6 +66,13 @@ export async function createProject(formData: FormData) {
 export async function updateProject(id: string, formData: FormData) {
   const supabase = await createClient();
 
+  const videoUrl = String(formData.get("video_url") ?? "").trim() || null;
+  let coverImage = String(formData.get("cover_image") ?? "").trim() || null;
+
+  if (!coverImage && videoUrl) {
+    coverImage = await fetchVideoThumbnail(videoUrl);
+  }
+
   const { error } = await supabase
     .from("portfolio_projects")
     .update({
@@ -70,9 +84,9 @@ export async function updateProject(id: string, formData: FormData) {
       challenge: String(formData.get("challenge") ?? "").trim(),
       solution: String(formData.get("solution") ?? "").trim(),
       results: linesToArray(String(formData.get("results") ?? "")),
-      cover_image: String(formData.get("cover_image") ?? "").trim() || null,
+      cover_image: coverImage,
       gallery: linesToArray(String(formData.get("gallery") ?? "")),
-      video_url: String(formData.get("video_url") ?? "").trim() || null,
+      video_url: videoUrl,
       featured: formData.get("featured") === "on",
       published: formData.get("published") === "on",
       updated_at: new Date().toISOString()
