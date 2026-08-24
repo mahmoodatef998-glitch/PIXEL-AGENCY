@@ -6,7 +6,7 @@ import { ContactSection } from "@/sections/contact-section";
 import { FaqAndBlogSection } from "@/sections/faq-blog-section";
 import { FeaturedBuildSection } from "@/sections/featured-build-section";
 import { HeroSection } from "@/sections/hero-section";
-import { ProcessAndPricing } from "@/sections/process-pricing-section";
+import { PricingSection, ProcessSection } from "@/sections/process-pricing-section";
 import { ServicesSection } from "@/sections/services-section";
 
 export default async function HomePage() {
@@ -38,8 +38,9 @@ export default async function HomePage() {
         <HeroSection tools={data.tools} />
         <FeaturedBuildSection />
         <ServicesSection services={data.services} />
-        <ProcessAndPricing pricingPlans={data.pricingPlans} agencyComparison={data.agencyComparison} />
         <CaseAndTestimonials portfolioProjects={data.portfolioProjects} testimonials={data.testimonials} />
+        <ProcessSection />
+        <PricingSection pricingPlans={data.pricingPlans} agencyComparison={data.agencyComparison} />
         <FaqAndBlogSection faqs={data.faqItems} posts={posts} />
         <ContactSection />
       </main>
