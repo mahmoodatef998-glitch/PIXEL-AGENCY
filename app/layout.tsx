@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AnalyticsScripts } from "@/components/analytics-scripts";
 import { ContactNudge } from "@/components/contact-nudge";
 import { ThemeProvider } from "@/components/theme-provider";
+import { getSiteSettings } from "@/lib/content";
 import { absoluteUrl, siteConfig } from "@/lib/site-config";
 
 const fontDisplay = Bricolage_Grotesque({
@@ -21,50 +22,55 @@ const fontBody = DM_Sans({
   variable: "--font-body"
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: "PixelPulse Agency | Best Marketing Agency in Dubai & UAE",
-    template: "%s | PixelPulse Agency Dubai"
-  },
-  description: siteConfig.description,
-  keywords: [
-    "marketing agency Dubai",
-    "best marketing agency UAE",
-    "social media management Dubai",
-    "performance marketing UAE",
-    "digital marketing Dubai",
-    "وكالة تسويق في دبي",
-    "أفضل وكالة تسويق في الإمارات",
-    "إدارة حسابات التواصل الاجتماعي دبي"
-  ],
-  openGraph: {
-    type: "website",
-    locale: siteConfig.locale,
-    title: "PixelPulse Agency | Creative Growth Studio Dubai",
-    description:
-      "Most agencies give you posts. We build your entire growth engine in Dubai: campaigns + systems + automation.",
-    url: siteConfig.url,
-    siteName: "PixelPulse Agency Dubai",
-    images: [
-      {
-        url: absoluteUrl("/opengraph-image"),
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PixelPulse Agency Dubai",
-    description: "A full growth infrastructure partner in Dubai — marketing + systems + automation.",
-    images: [absoluteUrl("/opengraph-image")]
-  },
-  alternates: {
-    canonical: siteConfig.url
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { logoUrl } = await getSiteSettings();
+
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: {
+      default: "PixelPulse Agency | Best Marketing Agency in Dubai & UAE",
+      template: "%s | PixelPulse Agency Dubai"
+    },
+    description: siteConfig.description,
+    keywords: [
+      "marketing agency Dubai",
+      "best marketing agency UAE",
+      "social media management Dubai",
+      "performance marketing UAE",
+      "digital marketing Dubai",
+      "وكالة تسويق في دبي",
+      "أفضل وكالة تسويق في الإمارات",
+      "إدارة حسابات التواصل الاجتماعي دبي"
+    ],
+    icons: logoUrl ? { icon: logoUrl, apple: logoUrl } : undefined,
+    openGraph: {
+      type: "website",
+      locale: siteConfig.locale,
+      title: "PixelPulse Agency | Creative Growth Studio Dubai",
+      description:
+        "Most agencies give you posts. We build your entire growth engine in Dubai: campaigns + systems + automation.",
+      url: siteConfig.url,
+      siteName: "PixelPulse Agency Dubai",
+      images: [
+        {
+          url: absoluteUrl("/opengraph-image"),
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "PixelPulse Agency Dubai",
+      description: "A full growth infrastructure partner in Dubai — marketing + systems + automation.",
+      images: [absoluteUrl("/opengraph-image")]
+    },
+    alternates: {
+      canonical: siteConfig.url
+    }
+  };
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
