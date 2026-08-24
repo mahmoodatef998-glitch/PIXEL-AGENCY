@@ -16,3 +16,9 @@ export type PortfolioProjectRow = {
   created_at: string;
   updated_at: string;
 };
+
+export type SiteSettingsRow = {
+  id: number;
+  logo_url: string | null;
+  updated_at: string;
+};

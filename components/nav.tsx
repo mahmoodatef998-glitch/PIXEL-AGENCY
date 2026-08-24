@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -17,14 +18,18 @@ const links = [
   { href: "/admin/login", label: "Admin" }
 ];
 
-export function Nav() {
+export function Nav({ logoUrl }: { logoUrl?: string | null }) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 px-3 md:px-4 py-2.5 md:py-3">
       <div className="container glass rounded-full px-4 md:px-5 py-2.5 md:py-3 flex items-center justify-between gap-3 md:gap-4">
         <Link href="/" className="font-display font-extrabold tracking-tight flex items-center gap-2">
-          <span className="size-2 rounded-full bg-accent shadow-[0_0_14px_rgba(0,229,255,0.9)]" />
+          {logoUrl ? (
+            <Image src={logoUrl} alt="PixelPulse" width={32} height={32} className="size-8 rounded-lg object-cover" />
+          ) : (
+            <span className="size-2 rounded-full bg-accent shadow-[0_0_14px_rgba(0,229,255,0.9)]" />
+          )}
           PixelPulse
         </Link>
 

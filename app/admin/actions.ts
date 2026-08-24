@@ -111,3 +111,21 @@ export async function deleteProject(id: string) {
   revalidatePath("/work");
   revalidatePath("/");
 }
+
+export async function updateSiteSettings(formData: FormData) {
+  const supabase = await createClient();
+  const logoUrl = String(formData.get("logo_url") ?? "").trim() || null;
+
+  const { error } = await supabase
+    .from("site_settings")
+    .update({ logo_url: logoUrl, updated_at: new Date().toISOString() })
+    .eq("id", 1);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/", "layout");
+  revalidatePath("/admin");
+  return { error: null };
+}

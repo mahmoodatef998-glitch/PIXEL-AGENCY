@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { AdminBoard } from "./board";
+import { BrandingForm } from "./branding-form";
 import { signOut } from "./actions";
-import type { PortfolioProjectRow } from "@/lib/supabase/types";
+import type { PortfolioProjectRow, SiteSettingsRow } from "@/lib/supabase/types";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +20,12 @@ export default async function AdminPage() {
     .order("created_at", { ascending: false })
     .returns<PortfolioProjectRow[]>();
 
+  const { data: settings } = await supabase
+    .from("site_settings")
+    .select("*")
+    .eq("id", 1)
+    .maybeSingle<SiteSettingsRow>();
+
   return (
     <main className="container py-16">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -32,6 +39,10 @@ export default async function AdminPage() {
             Sign out
           </button>
         </form>
+      </div>
+
+      <div className="mt-10">
+        <BrandingForm logoUrl={settings?.logo_url ?? null} />
       </div>
 
       <AdminBoard projects={projects ?? []} />

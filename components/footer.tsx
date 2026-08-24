@@ -1,12 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 
-export function Footer() {
+export function Footer({ logoUrl }: { logoUrl?: string | null }) {
   return (
     <footer className="border-t border-border bg-surface py-10 md:py-12">
       <div className="container grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <div>
-          <p className="font-display font-extrabold text-lg">PixelPulse Agency</p>
+          <div className="flex items-center gap-2.5">
+            {logoUrl && (
+              <Image src={logoUrl} alt="PixelPulse" width={28} height={28} className="size-7 rounded-md object-cover" />
+            )}
+            <p className="font-display font-extrabold text-lg">PixelPulse Agency</p>
+          </div>
           <p className="mt-2 text-sm text-muted">Marketing + Technology. One Roof. Zero Excuses.</p>
         </div>
         <div>
