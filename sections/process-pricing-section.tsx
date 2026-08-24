@@ -9,7 +9,38 @@ type AgencyComparison = {
   rows: { label: string; us: boolean; others: string }[];
 };
 
-export function ProcessAndPricing({
+export function ProcessSection() {
+  return (
+    <section id="how-we-work" className="bg-surface border-y border-border py-20">
+      <div className="container">
+        <Reveal>
+          <p className="text-xs uppercase tracking-[0.14em] text-accent">Process</p>
+          <h2 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight">From vision to results in 4 steps</h2>
+        </Reveal>
+        <div className="mt-10 grid gap-4 md:grid-cols-4">
+          {[
+            ["Discovery", "Deep business, offer, and market diagnostics."],
+            ["Build", "Website, campaigns, CRM/ERP foundations."],
+            ["Optimize", "Data-led tests across funnel and creative."],
+            ["Scale", "Monthly strategy loops tied to revenue outcomes."]
+          ].map(([title, desc], idx) => (
+            <Reveal key={title} delay={idx * 0.06}>
+              <article className="rounded-2xl border border-border bg-surface2/50 p-5">
+                <div className="mb-3 inline-flex size-9 items-center justify-center rounded-full border border-accent text-sm font-bold text-accent">
+                  {idx + 1}
+                </div>
+                <h3 className="font-display text-xl font-bold">{title}</h3>
+                <p className="mt-2 text-sm text-muted">{desc}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function PricingSection({
   pricingPlans,
   agencyComparison
 }: {
@@ -17,35 +48,7 @@ export function ProcessAndPricing({
   agencyComparison?: AgencyComparison;
 }) {
   return (
-    <>
-      <section id="how-we-work" className="bg-surface border-y border-border py-20">
-        <div className="container">
-          <Reveal>
-            <p className="text-xs uppercase tracking-[0.14em] text-accent">Process</p>
-            <h2 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight">From vision to results in 4 steps</h2>
-          </Reveal>
-          <div className="mt-10 grid gap-4 md:grid-cols-4">
-            {[
-              ["Discovery", "Deep business, offer, and market diagnostics."],
-              ["Build", "Website, campaigns, CRM/ERP foundations."],
-              ["Optimize", "Data-led tests across funnel and creative."],
-              ["Scale", "Monthly strategy loops tied to revenue outcomes."]
-            ].map(([title, desc], idx) => (
-              <Reveal key={title} delay={idx * 0.06}>
-                <article className="rounded-2xl border border-border bg-surface2/50 p-5">
-                  <div className="mb-3 inline-flex size-9 items-center justify-center rounded-full border border-accent text-sm font-bold text-accent">
-                    {idx + 1}
-                  </div>
-                  <h3 className="font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-2 text-sm text-muted">{desc}</p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="packages" className="container py-20">
+    <section id="packages" className="container py-20">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.14em] text-accent">Pricing</p>
           <h2 className="mt-2 font-display text-3xl md:text-5xl font-extrabold tracking-tight">
@@ -151,7 +154,6 @@ export function ProcessAndPricing({
           </Reveal>
         )}
       </section>
-    </>
   );
 }
 
