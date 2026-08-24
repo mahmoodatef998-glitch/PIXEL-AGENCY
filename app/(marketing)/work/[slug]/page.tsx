@@ -30,9 +30,6 @@ export default async function WorkDetailPage({ params }: Props) {
   const project = await getPortfolioProjectBySlug(slug);
   if (!project) notFound();
 
-  const embedUrl = project.videoUrl ? getVideoEmbedUrl(project.videoUrl) : null;
-  const widgetPlatform = project.videoUrl ? getVideoWidgetPlatform(project.videoUrl) : null;
-
   return (
     <main className="container py-20">
       <p className="text-xs uppercase tracking-[0.14em] text-accent">{project.category}</p>
@@ -45,41 +42,21 @@ export default async function WorkDetailPage({ params }: Props) {
         </p>
       )}
 
-      <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface">
-        {embedUrl ? (
-          <div className="relative aspect-video w-full">
-            <iframe
-              src={embedUrl}
-              title={project.title}
-              className="absolute inset-0 h-full w-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        ) : widgetPlatform === "instagram" && project.videoUrl ? (
-          <InstagramEmbed url={project.videoUrl} />
-        ) : widgetPlatform === "facebook" && project.videoUrl ? (
-          <FacebookEmbed url={project.videoUrl} />
-        ) : (
+      {project.videoUrls.length > 0 ? (
+        <div className={`mt-10 grid gap-6 ${project.videoUrls.length > 1 ? "md:grid-cols-2" : ""}`}>
+          {project.videoUrls.map((videoUrl) => (
+            <VideoPlayer key={videoUrl} url={videoUrl} title={project.title} coverImage={project.coverImage} />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-surface">
           <div className="relative aspect-video w-full bg-surface2">
             {project.coverImage && (
               <Image src={project.coverImage} alt={project.title} fill sizes="100vw" className="object-cover" />
             )}
-            {project.videoUrl && (
-              <a
-                href={project.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 flex items-center justify-center bg-black/40 transition hover:bg-black/55"
-              >
-                <span className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black">
-                  Watch video <ExternalLink className="size-4" />
-                </span>
-              </a>
-            )}
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {project.gallery.length > 0 && (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -119,5 +96,44 @@ export default async function WorkDetailPage({ params }: Props) {
         </Link>
       </section>
     </main>
+  );
+}
+
+function VideoPlayer({ url, title, coverImage }: { url: string; title: string; coverImage: string }) {
+  const embedUrl = getVideoEmbedUrl(url);
+  const widgetPlatform = getVideoWidgetPlatform(url);
+
+  return (
+    <div className="overflow-hidden rounded-2xl border border-border bg-surface">
+      {embedUrl ? (
+        <div className="relative aspect-video w-full">
+          <iframe
+            src={embedUrl}
+            title={title}
+            className="absolute inset-0 h-full w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      ) : widgetPlatform === "instagram" ? (
+        <InstagramEmbed url={url} />
+      ) : widgetPlatform === "facebook" ? (
+        <FacebookEmbed url={url} />
+      ) : (
+        <div className="relative aspect-video w-full bg-surface2">
+          {coverImage && <Image src={coverImage} alt={title} fill sizes="100vw" className="object-cover" />}
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 flex items-center justify-center bg-black/40 transition hover:bg-black/55"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-black">
+              Watch video <ExternalLink className="size-4" />
+            </span>
+          </a>
+        </div>
+      )}
+    </div>
   );
 }

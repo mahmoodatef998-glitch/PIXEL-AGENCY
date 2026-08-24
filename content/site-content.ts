@@ -129,6 +129,7 @@ export const portfolioProjects: PortfolioProject[] = [
     coverImage:
       "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1280&q=72",
     gallery: [],
+    videoUrls: [],
     isPlaceholder: true
   },
   {
@@ -143,6 +144,7 @@ export const portfolioProjects: PortfolioProject[] = [
     coverImage:
       "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1280&q=72",
     gallery: [],
+    videoUrls: [],
     isPlaceholder: true
   },
   {
@@ -157,6 +159,7 @@ export const portfolioProjects: PortfolioProject[] = [
     coverImage:
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1280&q=72",
     gallery: [],
+    videoUrls: [],
     isPlaceholder: true
   },
   {
@@ -171,6 +174,7 @@ export const portfolioProjects: PortfolioProject[] = [
     coverImage:
       "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1280&q=72",
     gallery: [],
+    videoUrls: [],
     isPlaceholder: true
   }
 ];

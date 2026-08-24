@@ -30,11 +30,11 @@ export async function createProject(formData: FormData) {
 
   const title = String(formData.get("title") ?? "").trim();
   const slugInput = String(formData.get("slug") ?? "").trim();
-  const videoUrl = String(formData.get("video_url") ?? "").trim() || null;
+  const videoUrls = linesToArray(String(formData.get("video_urls") ?? ""));
   let coverImage = String(formData.get("cover_image") ?? "").trim() || null;
 
-  if (!coverImage && videoUrl) {
-    coverImage = await fetchVideoThumbnail(videoUrl);
+  if (!coverImage && videoUrls[0]) {
+    coverImage = await fetchVideoThumbnail(videoUrls[0]);
   }
 
   const { error } = await supabase.from("portfolio_projects").insert({
@@ -48,7 +48,7 @@ export async function createProject(formData: FormData) {
     results: linesToArray(String(formData.get("results") ?? "")),
     cover_image: coverImage,
     gallery: linesToArray(String(formData.get("gallery") ?? "")),
-    video_url: videoUrl,
+    video_urls: videoUrls,
     featured: formData.get("featured") === "on",
     published: formData.get("published") === "on"
   });
@@ -66,11 +66,11 @@ export async function createProject(formData: FormData) {
 export async function updateProject(id: string, formData: FormData) {
   const supabase = await createClient();
 
-  const videoUrl = String(formData.get("video_url") ?? "").trim() || null;
+  const videoUrls = linesToArray(String(formData.get("video_urls") ?? ""));
   let coverImage = String(formData.get("cover_image") ?? "").trim() || null;
 
-  if (!coverImage && videoUrl) {
-    coverImage = await fetchVideoThumbnail(videoUrl);
+  if (!coverImage && videoUrls[0]) {
+    coverImage = await fetchVideoThumbnail(videoUrls[0]);
   }
 
   const { error } = await supabase
@@ -86,7 +86,7 @@ export async function updateProject(id: string, formData: FormData) {
       results: linesToArray(String(formData.get("results") ?? "")),
       cover_image: coverImage,
       gallery: linesToArray(String(formData.get("gallery") ?? "")),
-      video_url: videoUrl,
+      video_urls: videoUrls,
       featured: formData.get("featured") === "on",
       published: formData.get("published") === "on",
       updated_at: new Date().toISOString()
