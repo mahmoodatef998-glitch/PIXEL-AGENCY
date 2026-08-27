@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/content";
-import { buildArticleSchema, jsonLdScript } from "@/lib/json-ld";
+import { buildArticleSchema, buildBreadcrumbSchema, jsonLdScript } from "@/lib/json-ld";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -33,10 +33,16 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const articleSchema = buildArticleSchema(post);
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` }
+  ]);
 
   return (
     <main className="container py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(articleSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
       <p className="text-xs uppercase tracking-[0.1em] text-purple">
         {post.category} • {post.readTime}
       </p>

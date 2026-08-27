@@ -8,7 +8,8 @@ import type { PortfolioProject } from "@/types/content";
 export const metadata: Metadata = {
   title: "Our Work",
   description:
-    "Restaurant, medical, beauty salon, and automotive content and campaigns produced by PixelPulse Agency."
+    "Restaurant, medical, beauty salon, and automotive content and campaigns produced by PixelPulse Agency.",
+  alternates: { canonical: "/work" }
 };
 
 function groupByCategory(projects: PortfolioProject[]) {

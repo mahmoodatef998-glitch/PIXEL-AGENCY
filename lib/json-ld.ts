@@ -1,5 +1,20 @@
+import { absoluteUrl } from "@/lib/site-config";
+
 export function jsonLdScript(data: Record<string, unknown> | Record<string, unknown>[]) {
   return { __html: JSON.stringify(data) };
+}
+
+export function buildBreadcrumbSchema(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path)
+    }))
+  };
 }
 
 export function buildFaqSchema(faqs: { q: string; a: string }[]) {
@@ -42,7 +57,7 @@ export function buildArticleSchema(post: {
     articleSection: post.category,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://pixelpulse.agency/blog/${post.slug}`
+      "@id": absoluteUrl(`/blog/${post.slug}`)
     }
   };
 }

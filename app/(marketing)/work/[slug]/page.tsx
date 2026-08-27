@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { getPortfolioProjectBySlug, getPortfolioProjects } from "@/lib/content";
+import { buildBreadcrumbSchema, jsonLdScript } from "@/lib/json-ld";
 import { getVideoEmbedUrl, getVideoWidgetPlatform } from "@/lib/utils";
 import { FacebookEmbed, InstagramEmbed } from "@/components/social-embed";
 
@@ -21,7 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description: project.summary,
-    alternates: { canonical: `/work/${project.slug}` }
+    alternates: { canonical: `/work/${project.slug}` },
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+      images: project.coverImage ? [project.coverImage] : undefined
+    }
   };
 }
 
@@ -30,8 +36,15 @@ export default async function WorkDetailPage({ params }: Props) {
   const project = await getPortfolioProjectBySlug(slug);
   if (!project) notFound();
 
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Our Work", path: "/work" },
+    { name: project.title, path: `/work/${project.slug}` }
+  ]);
+
   return (
     <main className="container py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
       <p className="text-xs uppercase tracking-[0.14em] text-accent">{project.category}</p>
       <h1 className="mt-2 font-display text-4xl md:text-6xl font-extrabold tracking-tight">{project.title}</h1>
       <p className="mt-4 max-w-3xl text-lg text-muted">{project.summary}</p>

@@ -1,6 +1,6 @@
-import { getBlogPosts, getHomepageContent } from "@/lib/content";
+import { getBlogPosts, getHomepageContent, getSiteSettings } from "@/lib/content";
 import { buildFaqSchema, jsonLdScript } from "@/lib/json-ld";
-import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl, siteConfig } from "@/lib/site-config";
 import { ContactSection } from "@/sections/contact-section";
 import { FaqAndBlogSection } from "@/sections/faq-blog-section";
 import { FeaturedBuildSection } from "@/sections/featured-build-section";
@@ -12,6 +12,7 @@ import { ServicesSection } from "@/sections/services-section";
 export default async function HomePage() {
   const data = await getHomepageContent();
   const posts = await getBlogPosts();
+  const { logoUrl } = await getSiteSettings();
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -20,10 +21,16 @@ export default async function HomePage() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,
+    telephone: siteConfig.whatsapp,
+    ...(logoUrl ? { logo: logoUrl } : { logo: absoluteUrl("/opengraph-image") }),
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dubai",
       addressCountry: "AE"
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "United Arab Emirates"
     },
     sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin]
   };
