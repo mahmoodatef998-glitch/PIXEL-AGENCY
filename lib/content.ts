@@ -27,6 +27,7 @@ function mapPortfolioRow(row: PortfolioProjectRow): PortfolioProject {
     gallery: row.gallery,
     videoUrls: row.video_urls,
     featured: row.featured,
+    updatedAt: row.updated_at,
     isPlaceholder: false
   };
 }

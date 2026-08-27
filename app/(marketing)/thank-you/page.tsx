@@ -5,7 +5,8 @@ import { ThankYouTracker } from "@/components/thank-you-tracker";
 import { waLink } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Thank you"
+  title: "Thank you",
+  robots: { index: false, follow: true }
 };
 
 export default function ThankYouPage() {

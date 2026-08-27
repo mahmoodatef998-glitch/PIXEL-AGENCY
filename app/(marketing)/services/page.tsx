@@ -4,7 +4,8 @@ import { getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Explore PixelPulse services: social, media buying, web, CRM, ERP, branding, and lead generation."
+  description: "Explore PixelPulse services: social, media buying, web, CRM, ERP, branding, and lead generation.",
+  alternates: { canonical: "/services" }
 };
 
 export default async function ServicesPage() {

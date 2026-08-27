@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
 import { getServiceBySlug, getServices } from "@/lib/content";
-import { jsonLdScript } from "@/lib/json-ld";
+import { buildBreadcrumbSchema, buildFaqSchema, jsonLdScript } from "@/lib/json-ld";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -36,12 +36,21 @@ export default async function ServiceDetailPage({ params }: Props) {
     "@type": "Service",
     serviceType: service.title,
     provider: { "@type": "Organization", name: "PixelPulse Agency" },
-    description: service.description
+    description: service.description,
+    areaServed: { "@type": "Country", name: "United Arab Emirates" }
   };
+  const faqSchema = buildFaqSchema(service.faq);
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/services" },
+    { name: service.title, path: `/services/${service.slug}` }
+  ]);
 
   return (
     <main className="container py-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(faqSchema)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(breadcrumbSchema)} />
       <p className="text-xs uppercase tracking-[0.14em] text-accent">Service Page</p>
       <h1 className="mt-2 font-display text-4xl md:text-6xl font-extrabold tracking-tight">{service.title}</h1>
       <p className="mt-4 max-w-3xl text-lg text-muted">{service.description}</p>

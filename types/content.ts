@@ -33,6 +33,7 @@ export type PortfolioProject = {
   gallery: string[];
   videoUrls: string[];
   featured?: boolean;
+  updatedAt?: string;
   /** True until the real client assets replace this sample entry. */
   isPlaceholder?: boolean;
 };

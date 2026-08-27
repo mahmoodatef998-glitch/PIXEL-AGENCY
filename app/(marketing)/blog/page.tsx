@@ -4,7 +4,8 @@ import { getBlogPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "SEO-focused growth insights for UAE businesses: paid ads, lead generation, CRM, and conversion systems."
+  description: "SEO-focused growth insights for UAE businesses: paid ads, lead generation, CRM, and conversion systems.",
+  alternates: { canonical: "/blog" }
 };
 
 export default async function BlogPage() {
