@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "PixelPulse is the leading creative growth agency in Dubai. We provide social media management, performance marketing, and custom web systems for UAE brands.",
   email: "hello@pixelpulse.agency",
-  whatsapp: "+971523367694",
+  whatsapp: "+971563427393",
   locale: "en_AE",
   social: {
     instagram: "https://www.instagram.com/pixelpulse.agency",
