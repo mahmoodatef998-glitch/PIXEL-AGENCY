@@ -6,7 +6,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function OurWorkSection({ portfolioProjects }: { portfolioProjects: PortfolioProject[] }) {
-  const showcaseCards = portfolioProjects.slice(0, 4);
+  const showcaseCards = portfolioProjects.slice(0, 6);
   const provenProjectsCount = portfolioProjects.filter((p) => !p.isPlaceholder).length;
 
   return (
@@ -35,6 +35,10 @@ export function OurWorkSection({ portfolioProjects }: { portfolioProjects: Portf
             <p className="mx-auto mt-4 max-w-2xl bg-[linear-gradient(90deg,#F6E2B8,#C39B61,#9B8CFF,#89DAFF)] bg-clip-text text-sm md:text-base font-medium text-transparent">
               Creative campaigns crafted for ambitious brands.
             </p>
+            <Link href="/work" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline">
+              View all projects
+              <ArrowRight className="size-4" />
+            </Link>
           </Reveal>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
@@ -103,9 +107,14 @@ export function OurWorkSection({ portfolioProjects }: { portfolioProjects: Portf
               Want a portfolio tailored to your niche? We&apos;ll map references to your exact market
               {provenProjectsCount > 0 ? ` (${provenProjectsCount}+ proven projects).` : "."}
             </p>
-            <Link href="/#contact">
-              <Button variant="secondary">Get a tailored portfolio</Button>
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/work">
+                <Button variant="secondary">View all projects</Button>
+              </Link>
+              <Link href="/#contact">
+                <Button variant="secondary">Get a tailored portfolio</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
